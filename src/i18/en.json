@@ -1,0 +1,140 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Me",
+    "gallery": "My Gallery",
+    "services": "Our Services",
+    "booking": "Booking",
+    "contact": "Contact Me",
+    "admin": "Admin"
+  },
+  "home": {
+    "title": "EleKtro Tok",
+    "service": "Electrical Installation Services",
+    "company": "SP \"Shestak M.M.\""
+   
+  },
+  "myGallery": {
+    "addImage": "Add Image",
+    "addPhoto": "Add Photo",
+    "title": "My Gallery",
+    "loadMore": "Load More"
+  },
+  "aboutMe": {
+    "greeting": "Hello!",
+    "intro": "My name is Marianna.",
+    "experience": "I am a manicure and pedicure specialist with over 15 years of experience.",
+    "passion": "My passion for beauty and nail care started in my youth, and since then I have been continuously improving my skills to provide the best service to my clients."
+  },
+  "contactMe": {
+    "emailLine": "My email address:",
+    "emailTooltip": "Click to send an email",
+    "phoneLine": "My phone number:",
+    "callButton": "📞 Call"
+  },
+  "login": {
+    "title": "Login as Administrator",
+    "placeholder": "Enter password",
+    "button": "Login",
+    "error": "Login error"
+  },
+  "adminDashboard": {
+    "title": "Admin Dashboard",
+    "totalBookings": "Total bookings:",
+    "upcomingToday": "Bookings today:",
+    "vacationBookings": "Vacation bookings",
+    "checkBookingsByDate": "Check bookings by date",
+    "noBookings": "No booking information available",
+    "clientName": "Client Name",
+    "phone": "Phone Number",
+    "service": "Service",
+    "location": "Location",
+    "date": "Date",
+    "time": "Time",
+    "duration": "Duration",
+    "price": "Price",
+    "actions": "Actions",
+    "cancel": "Cancel",
+    "cancelled": "Cancelled",
+    "delete": "Delete",
+    "vacationBookingHeader": "Vacation bookings",
+    "vacationClickHint": "Click on a date to book/cancel. Double click to select hours.",
+    "bookingByHour": "Booking by hours",
+    "close": "Close",
+    "selectMonthYear": "Select month and year",
+    "noDateSelected": "Select a date above to see bookings",
+    "city": "Mukachevo",
+    "village": "Kljucharky"
+  },
+  "booking": {
+    "selectLocation": "Salon location",
+    "locationMukachevo": "Mukachevo",
+    "locationKliucharky": "Kliucharky",
+    "location_mukachevo": "Mukachevo",
+    "location_kliucharky": "Kliucharky",
+    "continueButton": "Continue",
+
+    "dateAndTime": "Date & time",
+    "confirmBooking": "Booking confirmation",
+
+    "service": "Service",
+    "services": "Services",
+    "totalDuration": "Total duration",
+    "totalPrice": "Total price",
+    "currency": "hrn",
+    "location": "Location",
+
+    "date": "Date",
+    "time": "Time",
+    "hours": "h",
+    "minutes": "min",
+
+    "book": "Book",
+
+    "modalBook": "Book",
+    "enterEmail": "Enter your email",
+    "continue": "Continue",
+    "cancel": "Cancel",
+
+    "registerTitle": "Please register",
+    "nameSurname": "Your name and surname",
+    "email": "Email",
+    "phone": "Phone number",
+    "register": "Register",
+
+    "errorFillAll": "Fill all fields!",
+    "errorInvalidPhone": "❌ Invalid phone format. Use +380XXXXXXXXX",
+    "errorUserExists": "⚠️ A user with this phone already exists!",
+    "successBooking": "✅ Booking successful!",
+    "errorSave": "❌ Error saving booking.",
+    "confirmEmailSent": "✅ Confirmation sent to email!",
+    "errorInvalidEmail": "❌ Invalid email format",
+    "errorSendingEmail": "❌ Error sending email: ",
+    "errorBookingOutsideWorkingHours": "❌ Booking time is outside working hours or overlaps with another booking!",
+    "errorCheckingUser": "❌ Error checking user",
+    "errorInvalidName": "Enter a valid name (minimum 3 characters)",
+    "errorInvalidNameFormat": "Name can only contain letters, spaces, apostrophes and hyphens",
+    "errorRegistration": "❌ Error registering"
+  },
+
+  "services": {
+    "manicure": {
+      "name": "Manicure",
+      "label": "Manicure - 1h - 500₴"
+    },
+    "pedicure": {
+      "name": "Pedicure",
+      "label": "Pedicure - 1.5h - 600₴"
+    },
+    "nail extensions": {
+      "name": "Nail extensions",
+      "label": "Nail extensions - 2h - 800₴"
+    },
+    "nail design": {
+      "name": "Nail design",
+      "label": "Nail design - 0.5h - 200₴"
+    }
+  },
+  "service_placeholder": "Services",
+  "continueButton": "Continue"
+}

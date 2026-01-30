@@ -1,0 +1,46 @@
+/* AboutMe.module.css */
+
+.aboutMe {
+  height: 100vh;
+  background-image: url("../assets/images/head-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 4rem;
+}
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .aboutMe {
+    padding: 2rem;
+  }
+}
+
+.aboutImage {
+  width: 25%;
+  float: right;
+  margin: 0 0 20px 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 14px 4px rgba(0, 0, 0, 1);
+}
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .aboutImage {
+    width: 40%;
+    display: block;
+    margin: 0 auto 20px auto;
+    float: right;
+  }
+}
+
+.text p {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #000;
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .text p {
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+    padding: 0;
+  }
+}

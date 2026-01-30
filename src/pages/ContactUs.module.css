@@ -1,0 +1,85 @@
+.contactMe {
+  padding: 0 40px; 
+  height: 100vh;
+  box-sizing: border-box;
+    background-image: url("../assets/images/head-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-left: 2rem;
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .text {
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+    padding: 0;
+  }
+}
+
+.mailLine {
+  margin-top: 3rem;
+}
+.mail {
+  position: relative;
+  color: #0077ff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.phoneLine {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.number {
+  position: relative;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  margin: 0 2rem 0 1rem;
+}
+.mail:hover {
+  color: #0077ff;
+}
+.mail::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: #0077ff;
+  transition: width 0.3s ease;
+}
+.mail:hover::after,
+.number:hover::after {
+  width: 100%;
+}
+.callButton {
+  background: linear-gradient(135deg, #00b09b, #96c93d);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.9rem 1.8rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+.callButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 176, 155, 0.3);
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+}
