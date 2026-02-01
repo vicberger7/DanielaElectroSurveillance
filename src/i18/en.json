@@ -1,11 +1,11 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About Me",
+    "about": "About Us",
     "gallery": "My Gallery",
     "services": "Our Services",
     "booking": "Booking",
-    "contact": "Contact Me",
+    "contact": "Contact Us",
     "admin": "Admin"
   },
   "home": {
@@ -20,17 +20,25 @@
     "title": "My Gallery",
     "loadMore": "Load More"
   },
-  "aboutMe": {
-    "greeting": "Hello!",
-    "intro": "My name is Marianna.",
-    "experience": "I am a manicure and pedicure specialist with over 15 years of experience.",
-    "passion": "My passion for beauty and nail care started in my youth, and since then I have been continuously improving my skills to provide the best service to my clients."
+  "aboutUs": {
+    "title": "Hello!",
+    "greeting": "We are Misha and Daniela, a family team working in the field of modern electrical solutions and security systems.",
+    "mishaName": "Shestak Mykhajlo",
+    "mishaJob": "Misha is responsible for important decisions and manages the team. He performs electrical installation and demolition work of any complexity level. Fast, high-quality and reliable - from replacing a socket to full electrical supply of rooms. Individual approach, affordable prices, warranty on all work. Works by agreement.",
+    "danielaName": "Shestak Daniela",
+    "danielaJob": "Daniela is a specialist in security systems and programming controllers for smart homes. She connects alarms, surveillance cameras, and sets up automation that makes your home truly \"smart\"."
   },
-  "contactMe": {
-    "emailLine": "My email address:",
+  "contactUs": {
+    "emailLine": "Email address:",
     "emailTooltip": "Click to send an email",
-    "phoneLine": "My phone number:",
-    "callButton": "📞 Call"
+    "workHoursTitle": "Working Hours",
+    "workHoursLine1": "Mon-Fri: 9:00 AM - 6:00 PM",
+    "workHoursLine2": "Sat-Sun: Closed",
+    "phoneMisha": "Misha's phone number:",
+    "phoneDaniela": "Daniela's phone number:",
+    "callButton": "📞 Call",
+    "addressTitle": "Our Address: Mukachevo, Uzhgorodska str, 84",
+    "getDirections": "📍 Get Directions"
   },
   "login": {
     "title": "Login as Administrator",

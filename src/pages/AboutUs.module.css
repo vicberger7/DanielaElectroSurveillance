@@ -1,46 +1,176 @@
 /* AboutMe.module.css */
 
-.aboutMe {
+.aboutUs {
   height: 100vh;
-  background-image: url("../assets/images/head-bg.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  padding: 4rem;
+  background: linear-gradient(
+    to bottom,
+    white 0%,
+    #eef4ff 30%,
+    #4da3ff 50%,
+    #0a1f44 100%
+  );
 }
+
 @media screen and (min-width: 350px) and (max-width: 430px) {
-  .aboutMe {
-    padding: 2rem;
+  .aboutUs {
+    height: 100%;
+    background: linear-gradient(to bottom, white 0%, #eef4ff 50%, #4da3ff 100%);
   }
 }
 
-.aboutImage {
-  width: 25%;
-  float: right;
-  margin: 0 0 20px 20px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 0 14px 4px rgba(0, 0, 0, 1);
-}
-@media screen and (min-width: 350px) and (max-width: 430px) {
-  .aboutImage {
-    width: 40%;
-    display: block;
-    margin: 0 auto 20px auto;
-    float: right;
-  }
-}
-
-.text p {
+h1 {
+  text-align: center;
+  padding: 1rem;
   font-size: 3rem;
-  font-weight: 600;
-  color: #000;
-  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  color: rgb(0, 0, 0);
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 1),
+    0 0 16px rgba(255, 255, 255, 1),
+    0 0 24px rgba(255, 255, 255, 1),
+    0 0 32px rgba(255, 255, 255, 1);
 }
+
 @media screen and (min-width: 350px) and (max-width: 430px) {
-  .text p {
+  h1 {
+    font-size: 2.5rem;
+    margin: 0; 
+    padding-bottom: 0.5;
+  }
+}
+
+.greeting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0 4rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 1),
+    0 0 16px rgba(255, 255, 255, 1),
+    0 0 24px rgba(255, 255, 255, 1),
+    0 0 32px rgba(255, 255, 255, 1);
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .greeting {
     font-size: 1.5rem;
-    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
-    padding: 0;
+    margin: 0;
+    padding: 0 1rem;
+    text-align: center;
+  }
+}
+
+.description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .description {
+    flex-direction: column;
+    padding: 1rem;
+  }
+}
+
+.mishaCard,
+.danielaCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  width: calc(100% / 2 - 2rem);
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .mishaCard,
+  .danielaCard {
+    width: 100%;
+    justify-content: center;
+    margin-top: 2rem;
+
+    display: block;
+  }
+}
+
+.mishaImg,
+.danielaImg {
+  width: 200px;
+  height: auto;
+  border-radius: 20%;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 1);
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .mishaImg,
+  .danielaImg {
+    width: 150px;
+    float: left;
+    align-self: self-start;
+    margin: 0.5rem 1rem 0 0;
+  }
+}
+
+@media screen and (min-width: 350px) and (max-width: 400px) {
+  .mishaImg,
+  .danielaImg {
+   
+    margin: 0.5rem 1rem 0.1rem 0;
+  }
+}
+
+.mishaText,
+.danielaText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .mishaText,
+  .danielaText {
+    gap: 0;
+    text-align: left;
+    display: block;
+    margin: 0;
+  }
+}
+
+.mishaName,
+.danielaName {
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .mishaName,
+  .danielaName {
+    font-size: 1.5rem;
+  margin: 0.4rem 0 0 11rem;
+  }
+}
+
+.mishaJob,
+.danielaJob {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .mishaJob,
+  .danielaJob {
+    font-size: 1.2rem;
   }
 }

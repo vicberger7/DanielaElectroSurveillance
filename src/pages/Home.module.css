@@ -6,6 +6,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 15%;
+ 
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
@@ -65,18 +66,16 @@
 @media screen and (min-width: 385px) and (max-width: 430px) {
   .textServ {
     align-items: center;
-
+    margin-top: -5rem;
     font-size: 1.5rem;
     font-weight: 500;
-
-    margin: 0 auto;
   }
 }
 
 @media screen and (min-width: 350px) and (max-width: 384px) {
   .textServ {
     max-width: 90%;
-    margin: 0 auto;
+     margin-top: -5rem;
 
     font-size: 1.5rem;
     font-weight: 500;
@@ -85,7 +84,7 @@
     text-align: center;
     text-align-last: right;
 
-    margin: 0 auto;
+  
   }
 }
 
