@@ -40,6 +40,33 @@
     "addressTitle": "Our Address: Mukachevo, Uzhgorodska str, 84",
     "getDirections": "📍 Get Directions"
   },
+  "ourServices": {
+    "title": "Our Services",
+    "electricJobs": "Electrical Installation Services",
+    "smartHomeandSurveillanceJobs": "Smart Home and Security Systems",
+    "mountUnmount": "Wiring Installation and Removal",
+    "elBoxes": "Electrical Panel Equipment",
+    "lightning": "Lighting and Outlets",
+    "lowVolt": "Low Voltage Systems",
+    "repJobs": "Repair Services",
+    "consult": "Consultations and Material Selection",
+    "smart": "Smart Home",
+    "support": "Consultations and Support",
+    "surveillance": "Video Surveillance",
+    "safety": "Signalization and Security"
+  },
+"description": {
+  "mountUnmount": "Wiring installation and removal (in apartments, houses, offices)\n\nReplacement of old wiring\n\nCable laying (in chases, cable channels, corrugation)",
+  "elBoxes": "Installation and replacement of electrical panels\n\nInstallation of circuit breakers, RCDs, voltage relays\n\nLoad distribution by groups",
+  "lightning": "Installation of chandeliers, spotlights\n\nInstallation of outlets, switches, motion sensors\n\nConnection of outdoor and decorative lighting",
+  "lowVolt": "Installation of intercoms, video surveillance\n\nConnection of internet cable, TV, alarm systems",
+  "repJobs": "Fault detection and troubleshooting\n\nReplacement of burnt wires, circuit breakers, outlets\n\nRestoration after short circuit",
+  "consult": "Consultations on electrical work\n\nAssistance in selecting materials and equipment\n\nCost estimation and project planning",
+  "smart": "Design and installation of smart home systems\n\nAutomation of lighting, climate control, security\n\nIntegration with mobile devices and voice assistants",
+  "support": "Ongoing support and maintenance of smart home systems\n\nTroubleshooting and updates\n\nUser training and system optimization",
+  "surveillance": "Installation of video surveillance systems\n\nConfiguration of cameras and recording devices\n\nRemote access and monitoring setup",
+  "safety": "Installation of alarm systems and sensors\n\nIntegration with smart home systems\n\n24/7 monitoring and emergency response setup"
+},
   "login": {
     "title": "Login as Administrator",
     "placeholder": "Enter password",
