@@ -42,6 +42,7 @@
   },
   "ourServices": {
     "title": "Our Services",
+    "hint": "Click on a service to learn more",
     "electricJobs": "Electrical Installation Services",
     "smartHomeandSurveillanceJobs": "Smart Home and Security Systems",
     "mountUnmount": "Wiring Installation and Removal",

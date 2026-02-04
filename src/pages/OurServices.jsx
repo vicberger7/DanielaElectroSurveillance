@@ -28,6 +28,7 @@ export default function OurServices() {
     <main>
       <article className={css.ourServices}>
         <h1>{t("ourServices.title")}</h1>
+        <p className={css.hint}>{t("ourServices.hint")}</p>
 
         <div className={css.servicesContainer}>
           <div className={css.electricityContainerWrap}>

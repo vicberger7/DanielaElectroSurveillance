@@ -19,6 +19,7 @@
 .ourServices h1 {
   text-align: center;
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
@@ -28,6 +29,28 @@
     box-shadow:
       0 0 0 1px rgba(77, 163, 255, 0.3),
       0 0 10px rgba(77, 163, 255, 0.4);
+  }
+}
+
+.hint {
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  color: rgb(0, 0, 0);
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.1),
+    0 0 16px rgba(0, 0, 0, 0.1),
+    0 0 24px rgba(0, 0, 0, 0.1),
+    0 0 32px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .hint {
+    font-size: 1rem;
+    padding: 0;
+    /* text-decoration: underline ; */
   }
 }
 

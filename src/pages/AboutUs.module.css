@@ -49,10 +49,10 @@ h1 {
   font-weight: 600;
   color: rgb(0, 0, 0);
   text-shadow:
-    0 0 8px rgba(255, 255, 255, 1),
-    0 0 16px rgba(255, 255, 255, 1),
-    0 0 24px rgba(255, 255, 255, 1),
-    0 0 32px rgba(255, 255, 255, 1);
+    0 0 8px rgba(0, 0, 0, 0.1),
+    0 0 16px rgba(0, 0, 0, 0.1),
+    0 0 24px rgba(0, 0, 0, 0.1),
+    0 0 32px rgba(0, 0, 0, 0.1);
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
@@ -70,7 +70,6 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 4rem;
-  gap: 2rem;
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
@@ -95,7 +94,7 @@ h1 {
   .danielaCard {
     width: 100%;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
 
     display: block;
   }
