@@ -10,31 +10,19 @@ import {
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import OurServices from "./pages/OurServices";
-// import Booking from "./pages/Booking";
 import ContactUs from "./pages/ContactUs";
-// import Login from "./pages/Login";
-// import AdminDashboard from "./pages/AdminDashboard";
 import css from "./App.module.css";
 import logo from "./assets/images/LogoDM.png";
 import { useTranslation } from "react-i18next";
 
-// function ProtectedRoute({ user, children }) {
-//   if (!user) {
-//     return <Navigate to="/login" replace />;
-//   }
-//   return children;
-// }
-
 export default function App() {
   const { t, i18n } = useTranslation();
- 
 
   const toggleLang = () => {
     const newLang = i18n.language === "ua" ? "en" : "ua";
     i18n.changeLanguage(newLang);
   };
 
-  // const user = JSON.parse(localStorage.getItem("user"));
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const sideMenuRef = useRef(null);
 
@@ -108,7 +96,6 @@ export default function App() {
                   to="/"
                   className={({ isActive }) => (isActive ? css.activeLink : "")}
                 >
-                  {/* Головна */}
                   {t("nav.home")}
                 </NavLink>
               </li>
@@ -125,20 +112,8 @@ export default function App() {
                     location.pathname === "/about" ? css.activeLink : ""
                   }
                 >
-                  {/* Про себе */}
                   {t("nav.about")}
                 </a>
-
-                {/* <div
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigate("/my-gallery");
-                  }}
-                  className={`${css.dropdown} ${isAboutOpen ? css.open : ""}`}
-                >
-                  {/* Моя галерея */}
-                  {/* {t("nav.gallery")}
-                </div> */} 
               </li>
 
               <li>
@@ -146,7 +121,6 @@ export default function App() {
                   to="/services"
                   className={({ isActive }) => (isActive ? css.activeLink : "")}
                 >
-                  {/* Наші послуги */}
                   {t("nav.services")}
                 </NavLink>
               </li>
@@ -155,19 +129,9 @@ export default function App() {
                   to="/contact"
                   className={({ isActive }) => (isActive ? css.activeLink : "")}
                 >
-                  {/* Зв'язатися */}
                   {t("nav.contact")}
                 </NavLink>
               </li>
-              {/* <li>
-                <NavLink
-                  to="/login"
-                  className={({ isActive }) => (isActive ? css.activeLink : "")}
-                >
-                  {/* Адмін */}
-                  {/* {t("nav.admin")}
-                </NavLink>
-              </li> */} 
             </ul>
             <button className={css.menuToggle} onClick={toggleMenu}>
               &#9776;
@@ -186,7 +150,6 @@ export default function App() {
                 onClick={toggleMenu}
                 className={({ isActive }) => (isActive ? css.activeLink : "")}
               >
-                {/* Головна */}
                 {t("nav.home")}
               </NavLink>
             </li>
@@ -196,20 +159,9 @@ export default function App() {
                 onClick={toggleMenu}
                 className={({ isActive }) => (isActive ? css.activeLink : "")}
               >
-                {/* Про себе */}
                 {t("nav.about")}
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink
-                to="/my-gallery"
-                onClick={toggleMenu}
-                className={({ isActive }) => (isActive ? css.activeLink : "")}
-              >
-                {/* Моя галерея */}
-                {/* {t("nav.gallery")}
-              </NavLink>
-            </li> */} 
 
             <li>
               <NavLink
@@ -217,7 +169,6 @@ export default function App() {
                 onClick={toggleMenu}
                 className={({ isActive }) => (isActive ? css.activeLink : "")}
               >
-                {/* Записатися */}
                 {t("nav.services")}
               </NavLink>
             </li>
@@ -227,38 +178,17 @@ export default function App() {
                 onClick={toggleMenu}
                 className={({ isActive }) => (isActive ? css.activeLink : "")}
               >
-                {/* Зв'язатися */}
                 {t("nav.contact")}
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink
-                to="/login"
-                onClick={toggleMenu}
-                className={({ isActive }) => (isActive ? css.activeLink : "")}
-              >
-                {/* Адмін */}
-                {/* {t("nav.admin")}
-              </NavLink>
-            </li> */} 
           </ul>
         </div>
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
-             {/* <Route path="/my-gallery" element={<MyGallery />} /> */}
-            <Route path="/services" element={<OurServices />} /> 
+            <Route path="/services" element={<OurServices />} />
             <Route path="/contact" element={<ContactUs />} />
-            {/* <Route path="/login" element={<Login />} /> 
-            {/* <Route
-              path="/admin"
-              element={
-                <ProtectedRoute user={user}>
-                  <AdminDashboard />
-                </ProtectedRoute>
-              }
-            /> */}
           </Routes>
         </main>
       </div>

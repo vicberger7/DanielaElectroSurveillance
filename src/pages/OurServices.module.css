@@ -1,12 +1,13 @@
 .ourServices {
   height: 100vh;
-  background: linear-gradient(
+  /* background: linear-gradient(
     to bottom,
     white 0%,
     #eef4ff 30%,
     #4da3ff 50%,
     #0a1f44 100%
-  );
+  ); */
+  background: #4da3ff;
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
@@ -24,11 +25,13 @@
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
   .ourServices h1 {
-    border-bottom: px solid #413f3f;
+    border-bottom: 2px solid #000000;
     margin-bottom: 1rem;
-    box-shadow:
-      0 0 0 1px rgba(77, 163, 255, 0.3),
-      0 0 10px rgba(77, 163, 255, 0.4);
+    text-shadow:
+    0 0 8px rgba(255, 255, 255, 1),
+    0 0 16px rgba(255, 255, 255, 1),
+    0 0 24px rgba(255, 255, 255, 1),
+    0 0 32px rgba(255, 255, 255, 1); 
   }
 }
 
@@ -39,18 +42,17 @@
   margin-bottom: 1.5rem;
   margin-top: 0;
   color: rgb(0, 0, 0);
-  text-shadow:
-    0 0 8px rgba(0, 0, 0, 0.1),
-    0 0 16px rgba(0, 0, 0, 0.1),
-    0 0 24px rgba(0, 0, 0, 0.1),
-    0 0 32px rgba(0, 0, 0, 0.1);
+ text-shadow:
+    0 0 8px rgba(255, 255, 255, 1),
+    0 0 16px rgba(255, 255, 255, 1),
+    0 0 24px rgba(255, 255, 255, 1),
+    0 0 32px rgba(255, 255, 255, 1); 
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
   .hint {
     font-size: 1rem;
     padding: 0;
-    /* text-decoration: underline ; */
   }
 }
 
@@ -115,10 +117,10 @@
   font-weight: 600;
   margin-bottom: 1rem;
   text-shadow:
-    0 0 8px rgba(0, 0, 0, 0.1),
-    0 0 16px rgba(0, 0, 0, 0.1),
-    0 0 24px rgba(0, 0, 0, 0.1),
-    0 0 32px rgba(0, 0, 0, 0.1);
+    0 0 8px rgba(255, 255, 255, 1),
+    0 0 16px rgba(255, 255, 255, 1),
+    0 0 24px rgba(255, 255, 255, 1),
+    0 0 32px rgba(255, 255, 255, 1);
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
@@ -155,11 +157,17 @@
   background: white;
   padding: 2rem;
   border-radius: 12px;
-  width: 80%;
+
   height: auto;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   position: relative;
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .modal {
+    width: 80%;
+  }
 }
 
 .modal p {
