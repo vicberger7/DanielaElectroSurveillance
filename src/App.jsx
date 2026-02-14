@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import OurServices from "./pages/OurServices";
 import ContactUs from "./pages/ContactUs";
+import Prices from "./pages/Prices";
 import css from "./App.module.css";
 import logo from "./assets/images/LogoDM.png";
 import { useTranslation } from "react-i18next";
@@ -126,6 +127,14 @@ export default function App() {
               </li>
               <li>
                 <NavLink
+                  to="/prices"
+                  className={({ isActive }) => (isActive ? css.activeLink : "")}
+                >
+                  {t("nav.prices")}
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
                   to="/contact"
                   className={({ isActive }) => (isActive ? css.activeLink : "")}
                 >
@@ -174,6 +183,15 @@ export default function App() {
             </li>
             <li>
               <NavLink
+                to="/prices"
+                onClick={toggleMenu}
+                className={({ isActive }) => (isActive ? css.activeLink : "")}
+              >
+                {t("nav.prices")}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/contact"
                 onClick={toggleMenu}
                 className={({ isActive }) => (isActive ? css.activeLink : "")}
@@ -188,6 +206,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/services" element={<OurServices />} />
+            <Route path="/prices" element={<Prices />} />
             <Route path="/contact" element={<ContactUs />} />
           </Routes>
         </main>
