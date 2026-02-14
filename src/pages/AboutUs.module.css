@@ -2,19 +2,13 @@
 
 .aboutUs {
   height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    white 0%,
-    #eef4ff 30%,
-    #4da3ff 50%,
-    #0a1f44 100%
-  );
+ 
+   background-color: #c7eaff;
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
   .aboutUs {
     height: 100%;
-    background: linear-gradient(to bottom, white 0%, #eef4ff 50%, #4da3ff 100%);
   }
 }
 
@@ -94,7 +88,7 @@ h1 {
   .danielaCard {
     width: 100%;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: -1rem; 
 
     display: block;
   }

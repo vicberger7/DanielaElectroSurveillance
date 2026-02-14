@@ -1,13 +1,6 @@
 .ourServices {
   height: 100vh;
-  /* background: linear-gradient(
-    to bottom,
-    white 0%,
-    #eef4ff 30%,
-    #4da3ff 50%,
-    #0a1f44 100%
-  ); */
-  background: #4da3ff;
+  background: #c7eaff;
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
