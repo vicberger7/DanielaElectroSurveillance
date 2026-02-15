@@ -24,13 +24,29 @@ display: none;
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
-  .hint {
+  .hint
+  {
     display: block;
     text-align: center;
     font-size: 1rem;
     margin: -0.5rem  0.5rem 1rem 0.5rem;
   }
 }
+
+.totalPrice {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .totalPrice {
+    font-size: 1rem;
+        margin: -0.5rem 1rem 1rem 1rem;
+  }
+}
+
+
 
 .table {
   width: 100%;

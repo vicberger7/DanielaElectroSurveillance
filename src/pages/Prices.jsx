@@ -45,6 +45,7 @@ export default function Home() {
       <article className={css.prices}>
         <p className={css.note}>{t("prices.note")}</p>
         <p className={css.hint}>{t("prices.hint")}</p>
+        <p className={css.totalPrice}>{t("prices.totalPrice")}</p>
 
         <table className={css.table}>
           <thead>
