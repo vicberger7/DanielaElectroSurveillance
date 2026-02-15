@@ -306,6 +306,11 @@
       }
     ],
     "serviceHeader": "Service",
-    "priceHeader": "Average Price"
+    "priceHeader": "Average Price",
+    "total": "Total cost",
+    "note": "Select services to see the total amount of performed works ",
+    "quantity": "qty",
+    "closeButton": "Close",
+    "hint": "Click on the “Quantity” field for better viewing"
   }
 }
