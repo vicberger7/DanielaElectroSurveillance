@@ -52,9 +52,10 @@ display: none;
   width: 100%;
   max-width: 80%;
   border-collapse: collapse;
-  border: 1px solid #ddd;
+  border: 1px solid #000000;
   font-size: 2rem;
-  margin: 0 auto;
+  margin: 0 auto 1rem auto;
+
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
@@ -180,11 +181,82 @@ display: none;
   }
 }
 
+.qtyModal {
+  align-self: center;
+  width: 6rem;
+  padding: 4px;
+  font-size: 1.5rem;
+}
+
+.modalPrice {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  margin-top: -1.5rem;
+  margin-bottom: 0;
+}
+
+.insertQuantity {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #666;
+  margin: 0;
+}
+
 @media screen and (min-width: 350px) and (max-width: 430px) {
   .quantity {
     margin-top: 0.2rem;
   }
 }
+
+.selected {
+  margin: 0 auto;
+  max-width: 80%;
+  border: 1px solid #000000;
+  border-radius: 10px;
+ font-size: 2rem;
+ 
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .selected {
+    max-width: 93%;
+    font-size: 1.2rem;
+  }
+}
+
+.selectedServices {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 1rem;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 1rem;
+}
+
+.selectedList {
+  padding: 0.5rem 1rem;
+  /* margin: 0; */
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .selectedServices {
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    
+  }
+}
+
+.selectedItem {
+  /* padding: 0.5rem 1rem; */
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+} 
 
 /* ------------------ Modal CSS ------------------ */
 
@@ -238,27 +310,3 @@ display: none;
   background-color: #0056b3;
 }
 
-.qtyButton {
-  width: 3rem;
-  height: 3rem;
-  background-color: #fff;
-  color: #007bff;
-  border: 1px solid #007bff;
-  border-radius: 5px;
-  font-size: 2rem;
-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-}
-
-.qtySpinner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.qtySpinner span {
-  font-size: 1.5rem;
-  font-weight: 500;
-  width: 2rem;
-  text-align: center;
-}

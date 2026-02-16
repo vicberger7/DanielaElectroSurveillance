@@ -14,7 +14,7 @@ export default function Home() {
   const changeQty = (index, value) => {
     setQuantities((prev) => ({
       ...prev,
-      [index]: Math.max(1, value), 
+      [index]: value,
     }));
   };
 
@@ -39,14 +39,12 @@ export default function Home() {
     }
   };
 
-
   return (
     <main>
       <article className={css.prices}>
         <p className={css.note}>{t("prices.note")}</p>
         <p className={css.hint}>{t("prices.hint")}</p>
         <p className={css.totalPrice}>{t("prices.totalPrice")}</p>
-
         <table className={css.table}>
           <thead>
             <tr>
@@ -65,6 +63,7 @@ export default function Home() {
                       type="checkbox"
                       checked={selected.includes(index)}
                       onChange={() => handleToggle(index)}
+                      onClick={() => handleQtyClick(index)}
                     />
                     <span>{item.service}</span>
                   </label>
@@ -72,17 +71,15 @@ export default function Home() {
                 <td>
                   <div className={css.priceCell}>
                     <div>{item.price}</div>
-                    <div
-                      className={css.number}
-                      onClick={() => handleQtyClick(index)}
-                    >
+                    <div className={css.number}>
                       <input
                         type="number"
                         min="1"
-                        value={quantities[index] || 1}
-                        onChange={(e) =>
-                          changeQty(index, Number(e.target.value))
-                        }
+                        value={quantities[index] ?? ""}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          changeQty(index, val === "" ? "" : Number(val));
+                        }}
                         className={css.qty}
                       />
                       <p className={css.quantity}>{t("prices.quantity")}</p>
@@ -93,9 +90,34 @@ export default function Home() {
             ))}
           </tbody>
         </table>
-        <p className={css.total}>
-          <strong>{t("prices.total")}:</strong> {total} грн
-        </p>
+        <div className={css.selected}>
+          <p className={css.selectedServices}>{t("prices.selectedServices")}</p>
+          {selected.length > 0 && (
+            <ol className={css.selectedList}>
+              {selected.map((index) => {
+                const qty = Number(quantities[index] || 1);
+                const price = getPriceValue(services[index].price);
+                const serviceTotal = price * qty;
+
+                return (
+                  <li key={index} className={css.selectedItem}>
+                    <span>
+                      {" "}
+                      {services[index].service} — {price} грн × {qty} ={" "}
+                    </span>
+                    <strong>{serviceTotal} грн</strong>
+                  </li>
+                );
+              })}
+            </ol>
+          )}
+          <p className={css.total}>
+            {t("prices.total")}:<strong> {total} грн</strong>
+          </p>
+        </div>
+
+        {/* Modal for mobile quantity input */}
+
         {modal.open && (
           <div
             className={css.modalBackdrop}
@@ -106,27 +128,18 @@ export default function Home() {
               onClick={(e) => e.stopPropagation()}
             >
               <h3>{services[modal.index].service}</h3>
-
-              <div className={css.qtySpinner}>
-                <button
-                  className={css.qtyButton}
-                  onClick={() =>
-                    changeQty(modal.index, (quantities[modal.index] || 1) - 1)
-                  }
-                >
-                  -
-                </button>
-                <span>{quantities[modal.index] || 1}</span>
-                <button
-                  className={css.qtyButton}
-                  onClick={() =>
-                    changeQty(modal.index, (quantities[modal.index] || 1) + 1)
-                  }
-                >
-                  +
-                </button>
-              </div>
-
+              <p className={css.modalPrice}>{services[modal.index].price}</p>
+              <input
+                type="number"
+                min="1"
+                value={quantities[modal.index] ?? ""}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  changeQty(modal.index, val === "" ? "" : Number(val));
+                }}
+                className={css.qtyModal}
+              />
+              <p className={css.insertQuantity}>{t("prices.insertQuantity")}</p>
               <button
                 className={css.closeButton}
                 onClick={() => setModal({ open: false, index: null })}
