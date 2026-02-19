@@ -314,6 +314,8 @@
     "hint": "Click on the “Quantity” field for better viewing",
     "totalPrice": "The list of selected services and the total cost of services will be indicated below after selecting the services and their quantity",
     "insertQuantity": "Enter quantity",
-    "selectedServices": "Selected services"
+    "selectedServices": "Selected services",
+    "editPrice": "Edit Price",
+    "saveButton": "Save"
   }
 }

@@ -1,15 +1,45 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import css from "./Prices.module.css";
 import { useTranslation } from "react-i18next";
 
-export default function Home() {
-  const { t } = useTranslation();
-
-  const services = t("prices.services", { returnObjects: true });
+export default function Prices() {
+  const { t, i18n } = useTranslation();
 
   const [selected, setSelected] = useState([]);
   const [quantities, setQuantities] = useState({});
   const [modal, setModal] = useState({ open: false, index: null });
+  const [servicesState, setServicesState] = useState(() =>
+    t("prices.services", { returnObjects: true }),
+  );
+
+  useEffect(() => {
+    setServicesState(t("prices.services", { returnObjects: true }));
+  }, [i18n.language]);
+
+  const [priceModal, setPriceModal] = useState({
+    open: false,
+    index: null,
+    value: "",
+  });
+
+  const pressTimer = useRef(null);
+
+  const handlePricePressStart = (index) => {
+    pressTimer.current = setTimeout(() => {
+      const numeric = getPriceValue(servicesState[index].price);
+      setPriceModal({
+        open: true,
+        index,
+        value: numeric,
+      });
+    }, 600);
+  };
+
+  const handlePricePressEnd = () => {
+    if (pressTimer.current) {
+      clearTimeout(pressTimer.current);
+    }
+  };
 
   const changeQty = (index, value) => {
     setQuantities((prev) => ({
@@ -30,7 +60,7 @@ export default function Home() {
 
   const total = selected.reduce((sum, index) => {
     const qty = quantities[index] || 1;
-    return sum + getPriceValue(services[index].price) * qty;
+    return sum + getPriceValue(servicesState[index].price) * qty;
   }, 0);
 
   const handleQtyClick = (index) => {
@@ -54,7 +84,7 @@ export default function Home() {
           </thead>
 
           <tbody>
-            {services.map((item, index) => (
+            {servicesState.map((item, index) => (
               <tr key={index}>
                 <td>
                   <label className={css.service}>
@@ -70,7 +100,16 @@ export default function Home() {
                 </td>
                 <td>
                   <div className={css.priceCell}>
-                    <div>{item.price}</div>
+                    <div
+                      onMouseDown={() => handlePricePressStart(index)}
+                      onMouseUp={handlePricePressEnd}
+                      onMouseLeave={handlePricePressEnd}
+                      onTouchStart={() => handlePricePressStart(index)}
+                      onTouchEnd={handlePricePressEnd}
+                      className={css.editablePrice}
+                    >
+                      {item.price}
+                    </div>
                     <div className={css.number}>
                       <input
                         type="number"
@@ -96,14 +135,15 @@ export default function Home() {
             <ol className={css.selectedList}>
               {selected.map((index) => {
                 const qty = Number(quantities[index] || 1);
-                const price = getPriceValue(services[index].price);
+                const price = getPriceValue(servicesState[index].price);
                 const serviceTotal = price * qty;
 
                 return (
                   <li key={index} className={css.selectedItem}>
                     <span>
                       {" "}
-                      {services[index].service} — {price} грн × {qty} ={" "}
+                      {servicesState[index].service} — {price} грн × {qty}{" "}
+                      ={" "}
                     </span>
                     <strong>{serviceTotal} грн</strong>
                   </li>
@@ -127,8 +167,10 @@ export default function Home() {
               className={css.modalContent}
               onClick={(e) => e.stopPropagation()}
             >
-              <h3>{services[modal.index].service}</h3>
-              <p className={css.modalPrice}>{services[modal.index].price}</p>
+              <h3>{servicesState[modal.index].service}</h3>
+              <p className={css.modalPrice}>
+                {servicesState[modal.index].price}
+              </p>
               <input
                 type="number"
                 min="1"
@@ -145,6 +187,53 @@ export default function Home() {
                 onClick={() => setModal({ open: false, index: null })}
               >
                 {t("prices.closeButton")}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {priceModal.open && (
+          <div
+            className={css.modalBackdrop}
+            onClick={() =>
+              setPriceModal({ open: false, index: null, value: "" })
+            }
+          >
+            <div
+              className={css.modalContent}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3>{t("prices.editPrice")}</h3>
+
+              <input
+                type="number"
+                min="0"
+                value={priceModal.value}
+                onChange={(e) =>
+                  setPriceModal((prev) => ({
+                    ...prev,
+                    value: e.target.value,
+                  }))
+                }
+                className={css.qtyModal}
+              />
+
+              <button
+                className={css.closeButton}
+                onClick={() => {
+                  setServicesState((prev) => {
+                    const updated = [...prev];
+                    updated[priceModal.index] = {
+                      ...updated[priceModal.index],
+                      price: priceModal.value + " грн",
+                    };
+                    return updated;
+                  });
+
+                  setPriceModal({ open: false, index: null, value: "" });
+                }}
+              >
+                {t("prices.saveButton")}
               </button>
             </div>
           </div>
