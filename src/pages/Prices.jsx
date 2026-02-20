@@ -5,15 +5,36 @@ import { useTranslation } from "react-i18next";
 export default function Prices() {
   const { t, i18n } = useTranslation();
 
+const [discountModal, setDiscountModal] = useState({ open: false });
+const [discount, setDiscount] = useState(0);
+
   const [selected, setSelected] = useState([]);
   const [quantities, setQuantities] = useState({});
   const [modal, setModal] = useState({ open: false, index: null });
-  const [servicesState, setServicesState] = useState(() =>
-    t("prices.services", { returnObjects: true }),
-  );
+  // const [servicesState, setServicesState] = useState(() =>
+  //   t("prices.services", { returnObjects: true }),
+  // );
+
+  const [servicesState, setServicesState] = useState(() => {
+    const saved = localStorage.getItem("servicesPrices");
+    return saved
+      ? JSON.parse(saved)
+      : t("prices.services", { returnObjects: true });
+  });
 
   useEffect(() => {
-    setServicesState(t("prices.services", { returnObjects: true }));
+    localStorage.setItem("servicesPrices", JSON.stringify(servicesState));
+  }, [servicesState]);
+
+  // useEffect(() => {
+  //   setServicesState(t("prices.services", { returnObjects: true }));
+  // }, [i18n.language]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("servicesPrices");
+    if (!saved) {
+      setServicesState(t("prices.services", { returnObjects: true }));
+    }
   }, [i18n.language]);
 
   const [priceModal, setPriceModal] = useState({
@@ -69,11 +90,33 @@ export default function Prices() {
     }
   };
 
+
+const handleTotalPressStart = () => {
+  pressTimer.current = setTimeout(() => {
+    setDiscountModal({ open: true });
+  }, 600); // long press for 600ms
+};
+
+const handleTotalPressEnd = () => {
+  if (pressTimer.current) {
+    clearTimeout(pressTimer.current);
+  }
+};
+
+const applyDiscount = (percent) => {
+  setDiscount(percent);
+  setDiscountModal({ open: false });
+};
+
+// Update total calculation to apply discount
+const discountedTotal = total - (total * discount) / 100;
+
+
+
   return (
     <main>
       <article className={css.prices}>
         <p className={css.note}>{t("prices.note")}</p>
-        <p className={css.hint}>{t("prices.hint")}</p>
         <p className={css.totalPrice}>{t("prices.totalPrice")}</p>
         <table className={css.table}>
           <thead>
@@ -151,8 +194,15 @@ export default function Prices() {
               })}
             </ol>
           )}
-          <p className={css.total}>
-            {t("prices.total")}:<strong> {total} грн</strong>
+          <p
+            className={css.total}
+            onMouseDown={handleTotalPressStart}
+            onMouseUp={handleTotalPressEnd}
+            onMouseLeave={handleTotalPressEnd}
+            onTouchStart={handleTotalPressStart}
+            onTouchEnd={handleTotalPressEnd}
+          >
+            {t("prices.total")}:<strong> {discountedTotal} грн</strong>
           </p>
         </div>
 
@@ -234,6 +284,38 @@ export default function Prices() {
                 }}
               >
                 {t("prices.saveButton")}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Discount Modal */}
+        {discountModal.open && (
+          <div
+            className={css.modalBackdrop}
+            onClick={() => setDiscountModal({ open: false })}
+          >
+            <div
+              className={css.modalContent}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3>{t("prices.makeDiscount")}</h3>
+              <div className={css.discountOptions}>
+                {[5, 10, 15].map((percent) => (
+                  <button
+                    key={percent}
+                    className={css.discountButton}
+                    onClick={() => applyDiscount(percent)}
+                  >
+                    {percent}%
+                  </button>
+                ))}
+              </div>
+              <button
+                className={css.closeButton}
+                onClick={() => setDiscountModal({ open: false })}
+              >
+                {t("prices.closeButton")}
               </button>
             </div>
           </div>

@@ -310,3 +310,21 @@ display: none;
   background-color: #0056b3;
 }
 
+.discountOptions {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0;
+}
+
+.discountButton {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+}
+
+.discountButton:hover {
+  background-color: #ddd;
+}

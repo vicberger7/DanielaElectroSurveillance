@@ -311,11 +311,12 @@
     "note": "Select services to see the total amount of performed works ",
     "quantity": "qty",
     "closeButton": "Close",
-    "hint": "Click on the “Quantity” field for better viewing",
+
     "totalPrice": "The list of selected services and the total cost of services will be indicated below after selecting the services and their quantity",
     "insertQuantity": "Enter quantity",
     "selectedServices": "Selected services",
     "editPrice": "Edit Price",
-    "saveButton": "Save"
+    "saveButton": "Save",
+    "makeDiscount": "Make a discount"
   }
 }
