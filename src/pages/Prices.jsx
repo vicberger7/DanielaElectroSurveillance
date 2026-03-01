@@ -107,29 +107,41 @@ export default function Prices() {
   // Update total calculation to apply discount
   const discountedTotal = total - (total * discount) / 100;
 
+  
+
   const handleDownloadPDF = async () => {
     if (!selectedRef.current) return;
 
-     setIsExporting(true);
+    setIsExporting(true);
 
-     // Wait for button to disappear from DOM
-     await new Promise((resolve) => setTimeout(resolve, 100));
+    // Wait for any UI changes (like hiding buttons)
+    await new Promise((resolve) => setTimeout(resolve, 100));
 
-    const canvas = await html2canvas(selectedRef.current, {
-      scale: 2,
-    });
-
+    const canvas = await html2canvas(selectedRef.current, { scale: 2 });
     const imgData = canvas.toDataURL("image/png");
 
     const pdf = new jsPDF("p", "mm", "a4");
-
     const pageWidth = pdf.internal.pageSize.getWidth();
-    const pageHeight = (canvas.height * pageWidth) / canvas.width;
+    const pageHeight = pdf.internal.pageSize.getHeight();
 
-    pdf.addImage(imgData, "PNG", 0, 10, pageWidth, pageHeight);
+    // Convert canvas size to mm
+    const imgWidth = pageWidth;
+    const imgHeight = (canvas.height * pageWidth) / canvas.width;
+
+    let heightLeft = imgHeight;
+    let position = 10; // top margin in mm
+
+    pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+    heightLeft -= pageHeight - 10; // subtract first page
+
+    while (heightLeft > 0) {
+      pdf.addPage();
+      position = heightLeft - imgHeight + 10;
+      pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+    }
 
     pdf.save("Selected-Services.pdf");
-
     setIsExporting(false);
   };
 
