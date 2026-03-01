@@ -105,7 +105,7 @@ export default function Prices() {
   };
 
   // Update total calculation to apply discount
-  const discountedTotal = total - (total * discount) / 100;
+  const discountedTotal = Math.round(total - (total * discount) / 100);
 
   
 
@@ -239,8 +239,7 @@ export default function Prices() {
           {discount > 0 && (
             <>
               <p className={css.discountInfo}>
-                {t("prices.discount")}
-                {discount}%:{" "}
+                {t("prices.discount")} {discount}%:{" "}
                 <strong>{Math.round((total * discount) / 100)} грн</strong>
               </p>
 
