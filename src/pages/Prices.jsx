@@ -1,19 +1,20 @@
 import { useState, useRef, useEffect } from "react";
 import css from "./Prices.module.css";
 import { useTranslation } from "react-i18next";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function Prices() {
+  const selectedRef = useRef(null);
   const { t, i18n } = useTranslation();
 
-const [discountModal, setDiscountModal] = useState({ open: false });
-const [discount, setDiscount] = useState(0);
+  const [discountModal, setDiscountModal] = useState({ open: false });
+  const [discount, setDiscount] = useState(0);
 
   const [selected, setSelected] = useState([]);
   const [quantities, setQuantities] = useState({});
   const [modal, setModal] = useState({ open: false, index: null });
-  // const [servicesState, setServicesState] = useState(() =>
-  //   t("prices.services", { returnObjects: true }),
-  // );
+  const [isExporting, setIsExporting] = useState(false);
 
   const [servicesState, setServicesState] = useState(() => {
     const saved = localStorage.getItem("servicesPrices");
@@ -25,10 +26,6 @@ const [discount, setDiscount] = useState(0);
   useEffect(() => {
     localStorage.setItem("servicesPrices", JSON.stringify(servicesState));
   }, [servicesState]);
-
-  // useEffect(() => {
-  //   setServicesState(t("prices.services", { returnObjects: true }));
-  // }, [i18n.language]);
 
   useEffect(() => {
     const saved = localStorage.getItem("servicesPrices");
@@ -90,28 +87,51 @@ const [discount, setDiscount] = useState(0);
     }
   };
 
+  const handleTotalPressStart = () => {
+    pressTimer.current = setTimeout(() => {
+      setDiscountModal({ open: true });
+    }, 600); // long press for 600ms
+  };
 
-const handleTotalPressStart = () => {
-  pressTimer.current = setTimeout(() => {
-    setDiscountModal({ open: true });
-  }, 600); // long press for 600ms
-};
+  const handleTotalPressEnd = () => {
+    if (pressTimer.current) {
+      clearTimeout(pressTimer.current);
+    }
+  };
 
-const handleTotalPressEnd = () => {
-  if (pressTimer.current) {
-    clearTimeout(pressTimer.current);
-  }
-};
+  const applyDiscount = (percent) => {
+    setDiscount(percent);
+    setDiscountModal({ open: false });
+  };
 
-const applyDiscount = (percent) => {
-  setDiscount(percent);
-  setDiscountModal({ open: false });
-};
+  // Update total calculation to apply discount
+  const discountedTotal = total - (total * discount) / 100;
 
-// Update total calculation to apply discount
-const discountedTotal = total - (total * discount) / 100;
+  const handleDownloadPDF = async () => {
+    if (!selectedRef.current) return;
 
+     setIsExporting(true);
 
+     // Wait for button to disappear from DOM
+     await new Promise((resolve) => setTimeout(resolve, 100));
+
+    const canvas = await html2canvas(selectedRef.current, {
+      scale: 2,
+    });
+
+    const imgData = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF("p", "mm", "a4");
+
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = (canvas.height * pageWidth) / canvas.width;
+
+    pdf.addImage(imgData, "PNG", 0, 10, pageWidth, pageHeight);
+
+    pdf.save("Selected-Services.pdf");
+
+    setIsExporting(false);
+  };
 
   return (
     <main>
@@ -172,7 +192,7 @@ const discountedTotal = total - (total * discount) / 100;
             ))}
           </tbody>
         </table>
-        <div className={css.selected}>
+        <div className={css.selected} ref={selectedRef}>
           <p className={css.selectedServices}>{t("prices.selectedServices")}</p>
           {selected.length > 0 && (
             <ol className={css.selectedList}>
@@ -202,8 +222,24 @@ const discountedTotal = total - (total * discount) / 100;
             onTouchStart={handleTotalPressStart}
             onTouchEnd={handleTotalPressEnd}
           >
-            {t("prices.total")}:<strong> {discountedTotal} грн</strong>
+            {t("prices.total")}:<strong> {total} грн</strong>
           </p>
+          {discount > 0 && (
+            <>
+              <p className={css.discountInfo}>
+                {t("prices.discount")}: <strong>{discount}%</strong>
+              </p>
+
+              <p className={css.amountDue}>
+                {t("prices.amountDue")}: <strong>{discountedTotal} грн</strong>
+              </p>
+            </>
+          )}
+          {total > 0 && !isExporting && (
+            <button className={css.downloadButton} onClick={handleDownloadPDF}>
+              ⬇ PDF
+            </button>
+          )}
         </div>
 
         {/* Modal for mobile quantity input */}

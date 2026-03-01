@@ -20,16 +20,15 @@
 }
 
 .hint {
-display: none;
+  display: none;
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
-  .hint
-  {
+  .hint {
     display: block;
     text-align: center;
     font-size: 1rem;
-    margin: -0.5rem  0.5rem 1rem 0.5rem;
+    margin: -0.5rem 0.5rem 1rem 0.5rem;
   }
 }
 
@@ -42,11 +41,9 @@ display: none;
 @media screen and (min-width: 350px) and (max-width: 430px) {
   .totalPrice {
     font-size: 1rem;
-        margin: -0.5rem 1rem 1rem 1rem;
+    margin: -0.5rem 1rem 1rem 1rem;
   }
 }
-
-
 
 .table {
   width: 100%;
@@ -55,7 +52,6 @@ display: none;
   border: 1px solid #000000;
   font-size: 2rem;
   margin: 0 auto 1rem auto;
-
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
@@ -128,16 +124,19 @@ display: none;
   }
 }
 
-.total {
+.total,
+.amountDue,
+.discountInfo {
   text-align: center;
   font-size: 3rem;
-  margin-top: 2rem;
+  margin: 1rem;
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
-  .total {
+  .total,
+  .amountDue,
+  .discountInfo {
     font-size: 1.5rem;
-    margin-top: 1rem;
   }
 }
 
@@ -214,8 +213,7 @@ display: none;
   max-width: 80%;
   border: 1px solid #000000;
   border-radius: 10px;
- font-size: 2rem;
- 
+  font-size: 2rem;
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
@@ -228,6 +226,7 @@ display: none;
 .selectedServices {
   text-align: center;
   font-size: 2rem;
+  font-weight: 600;
   margin-top: 1rem;
   border-bottom: 1px solid #000000;
   padding-bottom: 1rem;
@@ -235,7 +234,7 @@ display: none;
 
 .selectedList {
   padding: 0.5rem 1rem;
-  /* margin: 0; */
+  margin-bottom: 0;
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
@@ -243,7 +242,6 @@ display: none;
     font-size: 1.3rem;
     margin-top: 0.5rem;
     padding-bottom: 0.5rem;
-    
   }
 }
 
@@ -252,11 +250,11 @@ display: none;
   margin-bottom: 1rem;
   border-bottom: 1px solid #ddd;
 
-   display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-} 
+}
 
 /* ------------------ Modal CSS ------------------ */
 
@@ -327,4 +325,27 @@ display: none;
 
 .discountButton:hover {
   background-color: #ddd;
+}
+
+.downloadButton {
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: #fff;
+}
+
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .downloadButton {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+    margin: 0.5rem;
+  }
+}
+
+.downloadButton.hideForExport {
+  display: none !important;
 }

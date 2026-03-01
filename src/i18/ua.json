@@ -251,6 +251,8 @@
         "selectedServices": "Обрані послуги",
         "editPrice": "Редагувати ціну",
         "saveButton": "Зберегти",
-        "makeDiscount": "Зробити знижку"
+        "makeDiscount": "Зробити знижку",
+        "discount": "Знижка",
+        "amountDue": "Сума до сплати"
   }
 }

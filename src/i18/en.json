@@ -317,6 +317,8 @@
     "selectedServices": "Selected services",
     "editPrice": "Edit Price",
     "saveButton": "Save",
-    "makeDiscount": "Make a discount"
+    "makeDiscount": "Make a discount",
+    "discount": "Discount",
+    "amountDue": "Amount due"
   }
 }
