@@ -227,7 +227,9 @@ export default function Prices() {
           {discount > 0 && (
             <>
               <p className={css.discountInfo}>
-                {t("prices.discount")}: <strong>{discount}%</strong>
+                {t("prices.discount")}
+                {discount}%:{" "}
+                <strong>{Math.round((total * discount) / 100)} грн</strong>
               </p>
 
               <p className={css.amountDue}>
