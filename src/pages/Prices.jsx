@@ -90,7 +90,7 @@ export default function Prices() {
   const handleTotalPressStart = () => {
     pressTimer.current = setTimeout(() => {
       setDiscountModal({ open: true });
-    }, 600); // long press for 600ms
+    }, 600); 
   };
 
   const handleTotalPressEnd = () => {
@@ -104,44 +104,34 @@ export default function Prices() {
     setDiscountModal({ open: false });
   };
 
-  // Update total calculation to apply discount
+
   const discountedTotal = Math.round(total - (total * discount) / 100);
 
   
+
+ 
 
   const handleDownloadPDF = async () => {
     if (!selectedRef.current) return;
 
     setIsExporting(true);
-
-    // Wait for any UI changes (like hiding buttons)
     await new Promise((resolve) => setTimeout(resolve, 100));
 
     const canvas = await html2canvas(selectedRef.current, { scale: 2 });
     const imgData = canvas.toDataURL("image/png");
 
-    const pdf = new jsPDF("p", "mm", "a4");
-    const pageWidth = pdf.internal.pageSize.getWidth();
-    const pageHeight = pdf.internal.pageSize.getHeight();
+    const pdfWidth = 210; 
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
-    // Convert canvas size to mm
-    const imgWidth = pageWidth;
-    const imgHeight = (canvas.height * pageWidth) / canvas.width;
+    const pdf = new jsPDF("p", "mm", [pdfWidth, pdfHeight]);
 
-    let heightLeft = imgHeight;
-    let position = 10; // top margin in mm
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
 
-    pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-    heightLeft -= pageHeight - 10; // subtract first page
+    const pdfBlob = pdf.output("blob");
+    const pdfUrl = URL.createObjectURL(pdfBlob);
 
-    while (heightLeft > 0) {
-      pdf.addPage();
-      position = heightLeft - imgHeight + 10;
-      pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-    }
+    window.open(pdfUrl, "_blank");
 
-    pdf.save("Selected-Services.pdf");
     setIsExporting(false);
   };
 
