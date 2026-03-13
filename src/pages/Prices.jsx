@@ -107,65 +107,25 @@ export default function Prices() {
   // Update total calculation to apply discount
   const discountedTotal = Math.round(total - (total * discount) / 100);
 
-  /////////////////////111/////////////////////
-
 
   // const handleDownloadPDF = async () => {
   //   if (!selectedRef.current) return;
 
   //   setIsExporting(true);
-
-  //   // Wait for any UI changes (like hiding buttons)
   //   await new Promise((resolve) => setTimeout(resolve, 100));
 
-  //   const canvas = await html2canvas(selectedRef.current, { scale: 2 });
+  //   const canvas = await html2canvas(selectedRef.current, {
+  //     scale: 2,
+  //     useCORS: true,
+  //     scrollX: 0,
+  //     windowWidth: document.documentElement.scrollWidth,
+  //   });
+
   //   const imgData = canvas.toDataURL("image/png");
 
   //   const pdf = new jsPDF("p", "mm", "a4");
-  //   const pageWidth = pdf.internal.pageSize.getWidth();
-  //   const pageHeight = pdf.internal.pageSize.getHeight();
-
-  //   // Convert canvas size to mm
-  //   const imgWidth = pageWidth;
-  //   const imgHeight = (canvas.height * pageWidth) / canvas.width;
-
-  //   let heightLeft = imgHeight;
-  //   let position = 10; // top margin in mm
-
-  //   pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-  //   heightLeft -= pageHeight - 10; // subtract first page
-
-  //   while (heightLeft > 0) {
-  //     pdf.addPage();
-  //     position = heightLeft - imgHeight + 10;
-  //     pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-  //     heightLeft -= pageHeight;
-  //   }
-
-  //   // pdf.save("Selected-Services.pdf");
-
-  //   const pdfBlob = pdf.output("blob");
-  //   const pdfUrl = URL.createObjectURL(pdfBlob);
-  //   window.open(pdfUrl, "_blank");
-  //   setIsExporting(false);
-  // };
-
-
-  //////////////////////222/////////////////////////
-
-  // const handleDownloadPDF = async () => {
-  //   if (!selectedRef.current) return;
-
-  //   setIsExporting(true);
-  //   await new Promise((resolve) => setTimeout(resolve, 100));
-
-  //   const canvas = await html2canvas(selectedRef.current, { scale: 2 });
-  //   const imgData = canvas.toDataURL("image/png");
-
-  //   const pdfWidth = 210; // A4 width in mm
+  //   const pdfWidth = pdf.internal.pageSize.getWidth();
   //   const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-  //   const pdf = new jsPDF("p", "mm", [pdfWidth, pdfHeight]);
 
   //   pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
 
@@ -176,8 +136,6 @@ export default function Prices() {
 
   //   setIsExporting(false);
   // };
-
-  /////////////////333/////////////////////
 
   const handleDownloadPDF = async () => {
     if (!selectedRef.current) return;
@@ -195,8 +153,9 @@ export default function Prices() {
     const imgData = canvas.toDataURL("image/png");
 
     const pdf = new jsPDF("p", "mm", "a4");
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+    const pdfWidth = pdf.internal.pageSize.getWidth(); // 210
+    const pdfHeight = pdf.internal.pageSize.getHeight(); // 297
 
     pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
 
@@ -207,6 +166,7 @@ export default function Prices() {
 
     setIsExporting(false);
   };
+
 
 
   return (
