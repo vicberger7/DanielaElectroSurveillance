@@ -108,64 +108,37 @@ export default function Prices() {
   const discountedTotal = Math.round(total - (total * discount) / 100);
 
 
-  // const handleDownloadPDF = async () => {
-  //   if (!selectedRef.current) return;
+ const handleDownloadPDF = async () => {
+   if (!selectedRef.current) return;
 
-  //   setIsExporting(true);
-  //   await new Promise((resolve) => setTimeout(resolve, 100));
+   setIsExporting(true);
+   await new Promise((resolve) => setTimeout(resolve, 100));
 
-  //   const canvas = await html2canvas(selectedRef.current, {
-  //     scale: 2,
-  //     useCORS: true,
-  //     scrollX: 0,
-  //     windowWidth: document.documentElement.scrollWidth,
-  //   });
+   const canvas = await html2canvas(selectedRef.current, {
+     scale: 2,
+     useCORS: true,
+     scrollX: 0,
+     windowWidth: document.documentElement.scrollWidth,
+   });
 
-  //   const imgData = canvas.toDataURL("image/png");
+   const imgData = canvas.toDataURL("image/png");
 
-  //   const pdf = new jsPDF("p", "mm", "a4");
-  //   const pdfWidth = pdf.internal.pageSize.getWidth();
-  //   const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+   const imgWidth = 210; // A4 width in mm
+   const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-  //   pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+   // create pdf with dynamic height
+   const pdf = new jsPDF("p", "mm", [imgWidth, imgHeight]);
 
-  //   const pdfBlob = pdf.output("blob");
-  //   const pdfUrl = URL.createObjectURL(pdfBlob);
+   pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
 
-  //   window.open(pdfUrl, "_blank");
+   const pdfBlob = pdf.output("blob");
+   const pdfUrl = URL.createObjectURL(pdfBlob);
 
-  //   setIsExporting(false);
-  // };
+   window.open(pdfUrl, "_blank");
 
-  const handleDownloadPDF = async () => {
-    if (!selectedRef.current) return;
+   setIsExporting(false);
+ };
 
-    setIsExporting(true);
-    await new Promise((resolve) => setTimeout(resolve, 100));
-
-    const canvas = await html2canvas(selectedRef.current, {
-      scale: 2,
-      useCORS: true,
-      scrollX: 0,
-      windowWidth: document.documentElement.scrollWidth,
-    });
-
-    const imgData = canvas.toDataURL("image/png");
-
-    const pdf = new jsPDF("p", "mm", "a4");
-
-    const pdfWidth = pdf.internal.pageSize.getWidth(); // 210
-    const pdfHeight = pdf.internal.pageSize.getHeight(); // 297
-
-    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-
-    const pdfBlob = pdf.output("blob");
-    const pdfUrl = URL.createObjectURL(pdfBlob);
-
-    window.open(pdfUrl, "_blank");
-
-    setIsExporting(false);
-  };
 
 
 
