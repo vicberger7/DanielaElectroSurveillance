@@ -68,245 +68,410 @@
   "prices": {
     "services": [
       {
-        "service": "Gutter for wiring in concrete, gutter depth 2 cm",
-        "price": "166 hrn/per meter"
+        "category": "Preparing for cable laying",
+        "items": [
+          {
+            "service": "Chase (Aerated block)",
+            "price": "80 hrn/per meter"
+          },
+          {
+            "service": "Chase (Brick)",
+            "price": "100 hrn/per meter"
+          },
+          {
+            "service": "Chase (Concrete)",
+            "price": "200 hrn/per meter"
+          },
+          {
+            "service": "Filling of wall chases",
+            "price": "50 hrn/per meter"
+          },
+          {
+            "service": "Installing a metal tray",
+            "price": "400 hrn/pc"
+          },
+          {
+            "service": "Socket outlet hole (drywall)",
+            "price": "80 hrn/pc"
+          },
+          {
+            "service": "Socket outlet hole (Aerated block)",
+            "price": "100 hrn/pc"
+          },
+          {
+            "service": "Socket outlet hole (brick)",
+            "price": "120 hrn/pc"
+          },
+          {
+            "service": "Socket outlet hole (concrete)",
+            "price": "220 hrn/pc"
+          },
+          {
+            "service": "Installing of socket outlet",
+            "price": "50 hrn/pc"
+          },
+          {
+            "service": "wiring and soldering conductors in a socket box",
+            "price": "50 hrn/pc"
+          },
+          {
+            "service": "Niche for 24-module distribution box (brick/concrete)",
+            "price": "750 hrn/pc"
+          },
+          {
+            "service": "Niche for 48-module distribution box (brick/concrete)",
+            "price": "1500 hrn/pc"
+          },
+          {
+            "service": "Niche for 72-module distribution box (brick/concrete)",
+            "price": "2250 hrn/pc"
+          },
+          {
+            "service": "Installation of a 24-module distribution box ",
+            "price": "400 hrn/pc"
+          },
+          {
+            "service": "Installation of a 48-module distribution box ",
+            "price": "600 hrn/pc"
+          },
+          {
+            "service": "Installation of a 72-module distribution box ",
+            "price": "900 hrn/pc"
+          }
+        ]
       },
       {
-        "service": "Gutter for wiring in brick, gutter depth 2 cm",
-        "price": "126 hrn/per meter"
+        "category": "Cable routing",
+        "items": [
+          {
+            "service": "Cable routing internet/TV",
+            "price": "30 hrn/per meter"
+          },
+          {
+            "service": "Internet/TV cable routing in a corrugation",
+            "price": "20 hrn/per meter"
+          },
+          {
+            "service": "Cable laying with a cross section up to 2.5 sq.mm",
+            "price": "35 hrn/per meter"
+          },
+          {
+            "service": "Cable laying with a cross section from 4 to 6 sq.mm",
+            "price": "50 hrn/per meter"
+          },
+          {
+            "service": "Cable laying with a cross section from 6 to 16 sq.mm",
+            "price": "85 hrn/per meter"
+          },
+          {
+            "service": "Cable laying in a corrugation",
+            "price": "20 hrn/per meter"
+          },
+
+          {
+            "service": "Cable laying in the metal sleeve",
+            "price": "30 hrn/per meter"
+          },
+          {
+            "service": "Laying of plastic gutter",
+            "price": "80 hrn/per meter"
+          }
+        ]
       },
       {
-        "service": "Gutter for wiring in drywall, gutter depth 2 cm",
-        "price": "72 hrn/per meter"
+        "category": "Air laying",
+        "items": [
+          {
+            "service": "Overhead line laying up to 16 mm²",
+            "price": "100 hrn/per meter"
+          },
+          {
+            "service": "Overhead line laying from 25 to 50 mm²",
+            "price": "120 hrn/per meter"
+          },
+          {
+            "service": "Overhead line laying from 70 to 120 mm²",
+            "price": "180 hrn/per meter"
+          },
+          {
+            "service": "Mounting the hook on the support",
+            "price": "300 hrn/pc"
+          },
+          {
+            "service": "Mounting the spotlight on a support",
+            "price": "700 hrn/pc"
+          },
+          {
+            "service": "Installation of piercing clamps",
+            "price": "150 hrn/pc"
+          },
+          {
+            "service": "Mounting the distribution box on a support ",
+            "price": "600 hrn/pc"
+          }
+        ]
       },
 
-      { "service": "Arrangement of a niche (brick)", "price": "834 hrn/pc" },
       {
-        "service": "Arrangement of a niche (concrete)",
-        "price": "1443 hrn/pc"
-      },
-      { "service": "Installing the electrical panel", "price": "643 hrn/pc" },
-      { "service": "Connecting an electricity meter", "price": "680 hrn/pc" },
-      {
-        "service": "Installing circuit breakers, 1 phase",
-        "price": "176 hrn/pc"
-      },
-      { "service": "Mounting a circuit breaker", "price": "173 hrn/pc" },
-      {
-        "service": "Installation of circuit breakers, RCDs",
-        "price": "315 hrn/pc"
-      },
-      {
-        "service": "Cutting a hole and installing a junction box (concrete)",
-        "price": "248 hrn/pc"
-      },
-      {
-        "service": "Cutting a hole and installing a junction box (brick)",
-        "price": "171 hrn/pc"
-      },
-      {
-        "service": "Cutting a hole and installing a junction box (drywall)",
-        "price": "133 hrn/pc"
-      },
-      {
-        "service": "Assembling the junction box, desoldering the wires",
-        "price": "327 hrn/pc"
-      },
-      {
-        "service": "Wire supply and fastening, open wiring",
-        "price": "39 hrn/per meter"
-      },
-      {
-        "service": "Wire supply and fastening, corrugated pipe, etc.",
-        "price": "53 hrn/per meter"
-      },
-      {
-        "service": "Cable supply with a cross-section above 4m2, open wiring",
-        "price": "53 hrn/per meter"
-      },
-      {
-        "service": "Cable supply with a cross-section of more than 10 sq. m., open wiring",
-        "price": "70 hrn/per meter"
-      },
-      {
-        "service": "Cutting a hole and installing a box (concrete)",
-        "price": "215 hrn/pc"
-      },
-      {
-        "service": "Cutting a hole and installing a box (brick)",
-        "price": "163 hrn/pc"
-      },
-      {
-        "service": "Cutting a hole and installing a box (drywall)",
-        "price": "111 hrn/pc"
-      },
-      {
-        "service": "Installation and connection of sockets and switches",
-        "price": "127 hrn/pc"
-      },
-      {
-        "service": "Installation of a plastic box",
-        "price": "65 hrn/per meter"
-      },
-      {
-        "service": "Installation and connection of the Armstrong ceiling light",
-        "price": "266 hrn/pc"
-      },
-      { "service": "Chandelier installation", "price": "484 hrn/pc" },
-      { "service": "Installation of wall lamp, sconce", "price": "314 hrn/pc" },
-      {
-        "service": "Installing a spotlight (without transformer)",
-        "price": "220 hrn/pc"
+        "category": "Distribution box and additional installations",
+        "items": [
+          {
+            "service": "Circuit breaker installation, 1 phase",
+            "price": "200 hrn/pc"
+          },
+          {
+            "service": "Circuit breaker installation, 3 phase",
+            "price": "250 hrn/pc"
+          },
+          {
+            "service": "Installation of a RCBO",
+            "price": "300 hrn/pc"
+          },
+          {
+            "service": "Installation of a 1-phase voltage relay",
+            "price": "350 hrn/pc"
+          },
+          {
+            "service": "Installation of a 3-phase voltage relay",
+            "price": "900 hrn/pc"
+          },
+          {
+            "service": "Installation of a distribution boxes",
+            "price": "200 hrn/pc"
+          },
+          {
+            "service": "Installation of a 1‑pole / 2‑pole contactor",
+            "price": "500 hrn/pc"
+          },
+          {
+            "service": "Installation of a 3‑pole / 4-pole contactor",
+            "price": "700 hrn/pc"
+          },
+          {
+            "service": "Installation of a weekly timer",
+            "price": "450 hrn/pc"
+          },
+          {
+            "service": "Installation of a single‑phase ATS",
+            "price": "1500 hrn/pc"
+          },
+          {
+            "service": "Installation of a three‑phase ATS",
+            "price": "2400 hrn/pc"
+          },
+          {
+            "service": "Installation of a wall‑mounted voltage stabilizer (without additional work)",
+            "price": "2000 hrn/pc"
+          },
+          {
+            "service": "Installation of a single‑phase meter",
+            "price": "600 hrn/pc"
+          },
+          {
+            "service": "Installation of a three‑phase meter",
+            "price": "1000 hrn/pc"
+          },
+          {
+            "service": "Connection of the generator up to 5 kW",
+            "price": "4500 hrn/pc"
+          },
+          {
+            "service": "Connection of the cooktop",
+            "price": "1000 hrn/pc"
+          }
+        ]
       },
       {
-        "service": "Installing and connecting the transformer",
-        "price": "243 hrn/pc"
+        "category": "Earthing",
+        "items": [
+          {
+            "service": "Installation of earthing with measurements",
+            "price": "5500 hrn/pc"
+          }
+        ]
       },
       {
-        "service": "Installation and connection of a voltage stabilizer",
-        "price": "1278 hrn/pc"
+        "category": "Sockets and switches",
+        "items": [
+          {
+            "service": "Installation of a socket / switch",
+            "price": "80 hrn/pc"
+          },
+          {
+            "service": "Installation of a double socket",
+            "price": "150 hrn/pc"
+          },
+          {
+            "service": "Installation of a internet socket",
+            "price": "150 hrn/pc"
+          },
+          {
+            "service": "Installation of a TV socket",
+            "price": "150 hrn/pc"
+          },
+          {
+            "service": "Installation of a surface‑mounted socket / switch",
+            "price": "150 hrn/pc"
+          },
+          {
+            "service": "Installation of a surface‑mounted junction box",
+            "price": "100 hrn/pc"
+          },
+          {
+            "service": "Connection of power plugs",
+            "price": "100 hrn/pc"
+          },
+          {
+            "service": "Installation of a flush‑mounted junction box",
+            "price": "250 hrn/pc"
+          }
+        ]
       },
       {
-        "service": "Installation of various sensors, a low voltage system",
-        "price": "230 hrn/pc"
+        "category": "Lighting installation",
+        "items": [
+          {
+            "service": "Installation of a wall‑mounted light fixture",
+            "price": "350 hrn/pc"
+          },
+          {
+            "service": "Installation of a pendant light fixture (on cables/chains)",
+            "price": "600 hrn/pc"
+          },
+          {
+            "service": "Installation of a chandelier (pre‑assembled)",
+            "price": "600 hrn/pc"
+          },
+          {
+            "service": "Installation of a ceiling light fixture",
+            "price": "350 hrn/pc"
+          },
+          {
+            "service": "Cutting a round opening for a recessed spotlight",
+            "price": "80 hrn/pc"
+          },
+          {
+            "service": "Cutting a square opening for a recessed spotlight",
+            "price": "150 hrn/pc"
+          },
+          {
+            "service": "Installation of a recessed spotlight",
+            "price": "120 hrn/pc"
+          },
+          {
+            "service": "Installation of a track rail for track lighting",
+            "price": "350 hrn/m"
+          },
+          {
+            "service": "Installation of a track light on the rail",
+            "price": "80 hrn/pc"
+          }
+        ]
       },
       {
-        "service": "Drilling through holes in the wall up to 25 mm (concrete, brick)",
-        "price": "132 hrn/pc"
+        "category": "LED lighting installation",
+        "items": [
+          {
+            "service": "Wall chasing for recessed LED profile (wall)",
+            "price": "150 hrn/m"
+          },
+          {
+            "service": "Wall chasing for recessed LED profile (ceiling)",
+            "price": "200 hrn/m"
+          },
+          {
+            "service": "Installation of a recessed LED profile",
+            "price": "100 hrn/m"
+          },
+          {
+            "service": "Installation of a surface‑mounted LED profile",
+            "price": "150 hrn/m"
+          },
+          {
+            "service": "Installation of LED strip",
+            "price": "150 hrn/m"
+          },
+          {
+            "service": "Installation of LED strip in hard‑to‑reach areas",
+            "price": "225 hrn/m"
+          },
+          {
+            "service": "Installation of a power supply unit",
+            "price": "350 hrn/pc"
+          }
+        ]
       },
       {
-        "service": "Arrangement of the grounding circuit, a set of works",
-        "price": "7365 hrn/pc"
+        "category": "Outdoor lighting",
+        "items": [
+          {
+            "service": "Installation of a motion sensor",
+            "price": "400 hrn/pc"
+          },
+          {
+            "service": "Installation of a floodlight",
+            "price": "350 hrn/pc"
+          }
+        ]
       },
       {
-        "service": "Dismantling the power cable",
-        "price": "111 hrn/per meter"
+        "category": "TV",
+        "items": [
+          {
+            "service": "Installation of a TV bracket",
+            "price": "700 hrn/pc"
+          },
+          {
+            "service": "Mounting the TV onto the bracket",
+            "price": "500 hrn/pc"
+          }
+        ]
       },
       {
-        "service": "Dismantling of exposed electrical wiring",
-        "price": "16 hrn/per meter"
+        "category": "Underfloor heating",
+        "items": [
+          {
+            "service": "Installation of electric underfloor heating (mat)",
+            "price": "300 hrn/sq.m"
+          },
+          {
+            "service": "Installation of electric underfloor heating (cable)",
+            "price": "350 hrn/sq.m"
+          },
+          {
+            "service": "Laying a conduit for the temperature sensor",
+            "price": "100 hrn/m"
+          },
+          {
+            "service": "Installation of a temperature sensor",
+            "price": "200 hrn/pc"
+          },
+          {
+            "service": "Installation of a thermostat",
+            "price": "400 hrn/pc"
+          }
+        ]
       },
       {
-        "service": "Dismantling other cables and wiring, exposed",
-        "price": "16 hrn/per meter"
-      },
-      {
-        "service": "Disconnection and dismantling of sockets, switches, lamps",
-        "price": "53 hrn/pc"
-      },
-      {
-        "service": "Moving the electrical panel to the apartment",
-        "price": "2306 hrn/pc"
-      },
-      {
-        "service": "Replacing electrical wiring in a 1-room apartment, complex",
-        "price": "27167 hrn/pc"
-      },
-      {
-        "service": "Replacing electrical wiring in an apartment - 2-room, complex",
-        "price": "35465 hrn/pc"
-      },
-      {
-        "service": "Replacing electrical wiring in an apartment - 3-room, complex",
-        "price": "43633 hrn/pc"
-      },
-      {
-        "service": "Replacing electrical wiring in an apartment - 4-room complex",
-        "price": "54226 hrn/pc"
-      },
-      {
-        "service": "Installing landscape lights in the ground",
-        "price": "376 hrn/pc"
-      },
-      {
-        "service": "Installation of lights in steps, concrete",
-        "price": "434 hrn/pc"
-      },
-      {
-        "service": "Installation of ground lights (without concrete base)",
-        "price": "323 hrn/pc"
-      },
-      { "service": "Installation of underwater lights", "price": "370 hrn/pc" },
-      {
-        "service": "Installation, connection of a floodlight for illuminating buildings",
-        "price": "414 hrn/pc"
-      },
-      { "service": "Installation of LED lights", "price": "241 hrn/pc" },
-      {
-        "service": "Development of electrical wiring diagram",
-        "price": "156 hrn/sq.m"
-      },
-      {
-        "service": "Installing a recessed or ducted fan",
-        "price": "370 hrn/pc"
-      },
-      {
-        "service": "Air conditioner installation by an electrician",
-        "price": "4724 hrn/pc"
-      },
-      {
-        "service": "Installation of the sensor of the Neptune system",
-        "price": "429 hrn/pc"
-      },
-      {
-        "service": "Connecting the Neptune system control unit",
-        "price": "1467 hrn/pc"
-      },
-      { "service": "Installation of the SCS outlet", "price": "185 hrn/pc" },
-      {
-        "service": "Electrical wiring testing in the premises",
-        "price": "102 hrn/sq.m"
-      },
-      {
-        "service": "Installation of the intercom call button",
-        "price": "188 hrn/pc"
-      },
-      {
-        "service": "Installation and connection of the doorbell",
-        "price": "251 hrn/pc"
-      },
-      {
-        "service": "Installation and setup of an intercom system",
-        "price": "1309 hrn/pc"
-      },
-      {
-        "service": "Installation of LED lighting strip in a box",
-        "price": "227 hrn/per meter"
-      },
-      {
-        "service": "Installation and connection of an electric heated towel rail",
-        "price": "771 hrn/pc"
-      },
-      { "service": "Arrangement of a hole for a fan", "price": "475 hrn/pc" },
-      { "service": "Filling of wall chases", "price": "58 hrn/per meter" },
-      {
-        "service": "Installation of electrical points on concrete",
-        "price": "329 hrn/pc"
-      },
-      {
-        "service": "Installation of electrical points on bricks",
-        "price": "276 hrn/pc"
-      },
-      {
-        "service": "Installation of electrical points in drywall",
-        "price": "215 hrn/pc"
-      },
-      {
-        "service": "Installation of a 3-phase circuit breaker",
-        "price": "441 hrn/pc"
-      },
-      {
-        "service": "Replacing an electrical outlet (dismantling + installation)",
-        "price": "189 hrn/pc"
-      },
-      { "service": "Installing the Voltage Relay", "price": "474 hrn/pc" },
-      {
-        "service": "Installation and connection of a UPS",
-        "price": "13950 hrn/point"
+        "category": "Emergency repair",
+        "items": [
+          {
+            "service": "Call-out within the city",
+            "price": "300 hrn/pc"
+          },
+          {
+            "service": "Diagnostics",
+            "price": "500 hrn/pc"
+          },
+          {
+            "service": "Repair of a junction box",
+            "price": "500 hrn/pc"
+          }
+        ]
       }
     ],
     "serviceHeader": "Service",
-    "priceHeader": "Average Price",
+    "priceHeader": "Price",
     "total": "Total cost",
     "note": "Select services to see the total amount of performed works ",
     "quantity": "qty",

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import css from "./Prices.module.css";
 import { useTranslation } from "react-i18next";
 import html2canvas from "html2canvas";
@@ -16,23 +16,29 @@ export default function Prices() {
   const [modal, setModal] = useState({ open: false, index: null });
   const [isExporting, setIsExporting] = useState(false);
 
-  const [servicesState, setServicesState] = useState(() => {
-    const saved = localStorage.getItem("servicesPrices");
-    return saved
-      ? JSON.parse(saved)
-      : t("prices.services", { returnObjects: true });
+  const services = t("prices.services", { returnObjects: true });
+
+  const flatServices = services.flatMap((group) =>
+    group.items.map((item) => ({
+      ...item,
+      category: group.category,
+    })),
+  );
+
+  const getCurrentPrice = (index) => {
+    return prices[index]?.price || flatServices[index].price;
+  };
+
+  const STORAGE_KEY = "servicePrices";
+
+  const [prices, setPrices] = useState(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : {};
   });
 
   useEffect(() => {
-    localStorage.setItem("servicesPrices", JSON.stringify(servicesState));
-  }, [servicesState]);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("servicesPrices");
-    if (!saved) {
-      setServicesState(t("prices.services", { returnObjects: true }));
-    }
-  }, [i18n.language]);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(prices));
+  }, [prices]);
 
   const [priceModal, setPriceModal] = useState({
     open: false,
@@ -44,7 +50,8 @@ export default function Prices() {
 
   const handlePricePressStart = (index) => {
     pressTimer.current = setTimeout(() => {
-      const numeric = getPriceValue(servicesState[index].price);
+      const numeric = getPriceValue(getCurrentPrice(index));
+
       setPriceModal({
         open: true,
         index,
@@ -66,19 +73,47 @@ export default function Prices() {
     }));
   };
 
+  const handleQtyChange = (index, value) => {
+    if (value === "") {
+      changeQty(index, "");
+      setSelected((prev) => prev.filter((i) => i !== index));
+      return;
+    }
+
+    const qty = Math.max(1, Number(value));
+
+    changeQty(index, qty);
+
+    setSelected((prev) => (prev.includes(index) ? prev : [...prev, index]));
+  };
+
   const getPriceValue = (price) => {
     return Number(price.replace(/[^\d]/g, ""));
   };
 
+  // const handleToggle = (index) => {
+  //   setSelected((prev) =>
+  //     prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
+  //   );
+  // };
   const handleToggle = (index) => {
-    setSelected((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
-    );
+    if (selected.includes(index)) {
+      setSelected((prev) => prev.filter((i) => i !== index));
+
+      setQuantities((prev) => {
+        const newQty = { ...prev };
+        delete newQty[index];
+        return newQty;
+      });
+    } else {
+      setSelected((prev) => [...prev, index]);
+    }
   };
 
   const total = selected.reduce((sum, index) => {
     const qty = quantities[index] || 1;
-    return sum + getPriceValue(servicesState[index].price) * qty;
+
+    return sum + getPriceValue(getCurrentPrice(index)) * qty;
   }, 0);
 
   const handleQtyClick = (index) => {
@@ -107,40 +142,53 @@ export default function Prices() {
   // Update total calculation to apply discount
   const discountedTotal = Math.round(total - (total * discount) / 100);
 
+  const handleDownloadPDF = async () => {
+    if (!selectedRef.current) return;
 
- const handleDownloadPDF = async () => {
-   if (!selectedRef.current) return;
+    setIsExporting(true);
+    await new Promise((resolve) => setTimeout(resolve, 100));
 
-   setIsExporting(true);
-   await new Promise((resolve) => setTimeout(resolve, 100));
+    const canvas = await html2canvas(selectedRef.current, {
+      scale: 2,
+      useCORS: true,
+      scrollX: 0,
+      windowWidth: document.documentElement.scrollWidth,
+    });
 
-   const canvas = await html2canvas(selectedRef.current, {
-     scale: 2,
-     useCORS: true,
-     scrollX: 0,
-     windowWidth: document.documentElement.scrollWidth,
-   });
+    const imgData = canvas.toDataURL("image/png");
 
-   const imgData = canvas.toDataURL("image/png");
+    const imgWidth = 210; // A4 width in mm
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-   const imgWidth = 210; // A4 width in mm
-   const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    // create pdf with dynamic height
+    const pdf = new jsPDF("p", "mm", [imgWidth, imgHeight]);
 
-   // create pdf with dynamic height
-   const pdf = new jsPDF("p", "mm", [imgWidth, imgHeight]);
+    pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
 
-   pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+    const pdfBlob = pdf.output("blob");
+    const pdfUrl = URL.createObjectURL(pdfBlob);
 
-   const pdfBlob = pdf.output("blob");
-   const pdfUrl = URL.createObjectURL(pdfBlob);
+    window.open(pdfUrl, "_blank");
 
-   window.open(pdfUrl, "_blank");
+    setIsExporting(false);
+  };
 
-   setIsExporting(false);
- };
+  const closeQtyModal = () => {
+    const qty = quantities[modal.index];
 
+    if (!qty || qty < 1) {
+      setSelected((prev) => prev.filter((i) => i !== modal.index));
+    } else {
+      setSelected((prev) =>
+        prev.includes(modal.index) ? prev : [...prev, modal.index],
+      );
+    }
 
-
+    setModal({
+      open: false,
+      index: null,
+    });
+  };
 
   return (
     <main>
@@ -156,49 +204,82 @@ export default function Prices() {
           </thead>
 
           <tbody>
-            {servicesState.map((item, index) => (
-              <tr key={index}>
-                <td>
-                  <label className={css.service}>
-                    <input
-                      className={css.checkbox}
-                      type="checkbox"
-                      checked={selected.includes(index)}
-                      onChange={() => handleToggle(index)}
-                      onClick={() => handleQtyClick(index)}
-                    />
-                    <span>{item.service}</span>
-                  </label>
-                </td>
-                <td>
-                  <div className={css.priceCell}>
-                    <div
-                      onMouseDown={() => handlePricePressStart(index)}
-                      onMouseUp={handlePricePressEnd}
-                      onMouseLeave={handlePricePressEnd}
-                      onTouchStart={() => handlePricePressStart(index)}
-                      onTouchEnd={handlePricePressEnd}
-                      className={css.editablePrice}
-                    >
-                      {item.price}
-                    </div>
-                    <div className={css.number}>
-                      <input
-                        type="number"
-                        min="1"
-                        value={quantities[index] ?? ""}
-                        onChange={(e) => {
-                          const val = e.target.value;
-                          changeQty(index, val === "" ? "" : Number(val));
-                        }}
-                        className={css.qty}
-                      />
-                      <p className={css.quantity}>{t("prices.quantity")}</p>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            ))}
+            {services.map((group, groupIndex) => {
+              let offset = services
+                .slice(0, groupIndex)
+                .reduce((sum, g) => sum + g.items.length, 0);
+
+              return (
+                <React.Fragment key={groupIndex}>
+                  <tr className={css.categoryRow}>
+                    <td colSpan={2}>{group.category}</td>
+                  </tr>
+
+                  {group.items.map((item, itemIndex) => {
+                    const globalIndex = offset + itemIndex;
+
+                    return (
+                      <tr key={globalIndex}>
+                        <td>
+                          <label className={css.service}>
+                            <input
+                              className={css.checkbox}
+                              type="checkbox"
+                              checked={selected.includes(globalIndex)}
+                              onChange={() => {
+                                const qty = quantities[globalIndex];
+
+                                if (qty && qty >= 1) {
+                                  handleToggle(globalIndex);
+                                } else {
+                                  handleQtyClick(globalIndex);
+                                }
+                              }}
+                            />
+                            <span>{item.service}</span>
+                          </label>
+                        </td>
+
+                        <td>
+                          <div className={css.priceCell}>
+                            <div
+                              onMouseDown={() =>
+                                handlePricePressStart(globalIndex)
+                              }
+                              onMouseUp={handlePricePressEnd}
+                              onMouseLeave={handlePricePressEnd}
+                              onTouchStart={() =>
+                                handlePricePressStart(globalIndex)
+                              }
+                              onTouchEnd={handlePricePressEnd}
+                              className={css.editablePrice}
+                            >
+                              {getCurrentPrice(globalIndex)}
+                            </div>
+
+                            <div className={css.number}>
+                              <input
+                                type="number"
+                                min="1"
+                                value={quantities[globalIndex] ?? ""}
+                                onChange={(e) =>
+                                  handleQtyChange(globalIndex, e.target.value)
+                                }
+                                className={css.qty}
+                              />
+
+                              <p className={css.quantity}>
+                                {t("prices.quantity")}
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </React.Fragment>
+              );
+            })}
           </tbody>
         </table>
         <div className={css.selected} ref={selectedRef}>
@@ -207,15 +288,14 @@ export default function Prices() {
             <ol className={css.selectedList}>
               {selected.map((index) => {
                 const qty = Number(quantities[index] || 1);
-                const price = getPriceValue(servicesState[index].price);
+                const price = getPriceValue(getCurrentPrice(index));
                 const serviceTotal = price * qty;
 
                 return (
                   <li key={index} className={css.selectedItem}>
                     <span>
                       {" "}
-                      {servicesState[index].service} — {price} грн × {qty}{" "}
-                      ={" "}
+                      {flatServices[index].service} — {price} грн × {qty} ={" "}
                     </span>
                     <strong>{serviceTotal} грн</strong>
                   </li>
@@ -257,15 +337,16 @@ export default function Prices() {
         {modal.open && (
           <div
             className={css.modalBackdrop}
-            onClick={() => setModal({ open: false, index: null })}
+            // onClick={() => setModal({ open: false, index: null })}
+            onClick={closeQtyModal}
           >
             <div
               className={css.modalContent}
               onClick={(e) => e.stopPropagation()}
             >
-              <h3>{servicesState[modal.index].service}</h3>
+              <h3>{flatServices[modal.index].service}</h3>
               <p className={css.modalPrice}>
-                {servicesState[modal.index].price}
+                {flatServices[modal.index].price}
               </p>
               <input
                 type="number"
@@ -278,10 +359,7 @@ export default function Prices() {
                 className={css.qtyModal}
               />
               <p className={css.insertQuantity}>{t("prices.insertQuantity")}</p>
-              <button
-                className={css.closeButton}
-                onClick={() => setModal({ open: false, index: null })}
-              >
+              <button className={css.closeButton} onClick={closeQtyModal}>
                 {t("prices.closeButton")}
               </button>
             </div>
@@ -317,16 +395,19 @@ export default function Prices() {
               <button
                 className={css.closeButton}
                 onClick={() => {
-                  setServicesState((prev) => {
-                    const updated = [...prev];
-                    updated[priceModal.index] = {
-                      ...updated[priceModal.index],
-                      price: priceModal.value + " грн",
-                    };
-                    return updated;
-                  });
+                  setPrices((prev) => ({
+                    ...prev,
+                    [priceModal.index]: {
+                      ...flatServices[priceModal.index],
+                      price: `${priceModal.value} грн`,
+                    },
+                  }));
 
-                  setPriceModal({ open: false, index: null, value: "" });
+                  setPriceModal({
+                    open: false,
+                    index: null,
+                    value: "",
+                  });
                 }}
               >
                 {t("prices.saveButton")}
