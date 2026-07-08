@@ -280,6 +280,13 @@
   gap: 1rem;
 }
 
+@media screen and (min-width: 350px) and (max-width: 430px) {
+  .serviceTotal {
+   display: flex;
+   flex-direction: column;
+  }
+}
+
 /* ------------------ Modal CSS ------------------ */
 
 .modalBackdrop {

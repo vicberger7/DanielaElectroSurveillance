@@ -18,13 +18,6 @@ export default function PricesDaniela() {
 
   const services = t("pricesDaniela.services", { returnObjects: true });
 
-  // const flatServices = services.flatMap((group) =>
-  //   group.items.map((item) => ({
-  //     ...item,
-  //     category: group.category,
-  //   })),
-  // );
-
   const getCurrentPrice = (index) => {
     return prices[index]?.price || services[index].price;
   };
@@ -90,7 +83,6 @@ export default function PricesDaniela() {
   const getPriceValue = (price) => {
     return Number(price.replace(/[^\d]/g, ""));
   };
-
 
   const handleToggle = (index) => {
     if (selected.includes(index)) {
@@ -199,84 +191,6 @@ export default function PricesDaniela() {
             </tr>
           </thead>
 
-          {/* <tbody>
-            {services.map((group, groupIndex) => {
-              let offset = services
-                .slice(0, groupIndex)
-                .reduce((sum, g) => sum + g.items.length, 0);
-
-              return (
-                <React.Fragment key={groupIndex}>
-                  <tr className={css.categoryRow}>
-                    <td colSpan={2}>{group.category}</td>
-                  </tr>
-
-                  {group.items.map((item, itemIndex) => {
-                    const globalIndex = offset + itemIndex;
-
-                    return (
-                      <tr key={globalIndex}>
-                        <td>
-                          <label className={css.service}>
-                            <input
-                              className={css.checkbox}
-                              type="checkbox"
-                              checked={selected.includes(globalIndex)}
-                              onChange={() => {
-                                const qty = quantities[globalIndex];
-
-                                if (qty && qty >= 1) {
-                                  handleToggle(globalIndex);
-                                } else {
-                                  handleQtyClick(globalIndex);
-                                }
-                              }}
-                            />
-                            <span>{item.service}</span>
-                          </label>
-                        </td>
-
-                        <td>
-                          <div className={css.priceCell}>
-                            <div
-                              onMouseDown={() =>
-                                handlePricePressStart(globalIndex)
-                              }
-                              onMouseUp={handlePricePressEnd}
-                              onMouseLeave={handlePricePressEnd}
-                              onTouchStart={() =>
-                                handlePricePressStart(globalIndex)
-                              }
-                              onTouchEnd={handlePricePressEnd}
-                              className={css.editablePrice}
-                            >
-                              {getCurrentPrice(globalIndex)}
-                            </div>
-
-                            <div className={css.number}>
-                              <input
-                                type="number"
-                                min="1"
-                                value={quantities[globalIndex] ?? ""}
-                                onChange={(e) =>
-                                  handleQtyChange(globalIndex, e.target.value)
-                                }
-                                className={css.qty}
-                              />
-
-                              <p className={css.quantity}>
-                                {t("prices.quantity")}
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </React.Fragment>
-              );
-            })}
-          </tbody> */}
           <tbody>
             {services.map((item, index) => (
               <tr key={index}>
@@ -346,7 +260,10 @@ export default function PricesDaniela() {
                       {" "}
                       {services[index].service} — {price} грн × {qty} ={" "}
                     </span>
-                    <strong>{serviceTotal} грн</strong>
+                    <strong className={css.serviceTotal}>
+                      <span>{serviceTotal} </span>
+                      <span>грн</span>
+                    </strong>
                   </li>
                 );
               })}
@@ -384,19 +301,13 @@ export default function PricesDaniela() {
         {/* Modal for mobile quantity input */}
 
         {modal.open && (
-          <div
-            className={css.modalBackdrop}
-            // onClick={() => setModal({ open: false, index: null })}
-            onClick={closeQtyModal}
-          >
+          <div className={css.modalBackdrop} onClick={closeQtyModal}>
             <div
               className={css.modalContent}
               onClick={(e) => e.stopPropagation()}
             >
               <h3>{services[modal.index].service}</h3>
-              <p className={css.modalPrice}>
-                {services[modal.index].price}
-              </p>
+              <p className={css.modalPrice}>{services[modal.index].price}</p>
               <input
                 type="number"
                 min="1"

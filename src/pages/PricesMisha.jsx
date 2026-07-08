@@ -292,7 +292,10 @@ export default function PricesMisha() {
                       {" "}
                       {flatServices[index].service} — {price} грн × {qty} ={" "}
                     </span>
-                    <strong>{serviceTotal} грн</strong>
+                    <strong className={css.serviceTotal}>
+                      <span>{serviceTotal} </span>
+                      <span>грн</span>
+                    </strong>
                   </li>
                 );
               })}
@@ -332,7 +335,7 @@ export default function PricesMisha() {
         {modal.open && (
           <div
             className={css.modalBackdrop}
-            // onClick={() => setModal({ open: false, index: null })}
+           
             onClick={closeQtyModal}
           >
             <div
