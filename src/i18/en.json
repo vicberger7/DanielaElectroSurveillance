@@ -4,7 +4,9 @@
     "about": "About Us",
     "services": "Our Services",
     "prices": "Prices",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "electro": "Electrical Installations",
+    "security": "Security Systems"
   },
   "home": {
     "title": "EleKtro Tok",
@@ -478,6 +480,213 @@
     "closeButton": "Close",
 
     "totalPrice": "The list of selected services and the total cost of services will be indicated below after selecting the services and their quantity",
+    "insertQuantity": "Enter quantity",
+    "selectedServices": "Selected services",
+    "editPrice": "Edit Price",
+    "saveButton": "Save",
+    "makeDiscount": "Make a discount",
+    "discount": "Discount",
+    "amountDue": "Amount due"
+  },
+  "pricesDaniela": {
+    "services": [
+      {
+        "service": "On-site visit within the city and outside the city for cost estimation",
+        "price": "300 hrn/point"
+      },
+      {
+        "service": "Out-of-town travel",
+        "price": "20 hrn/km"
+      },
+      {
+        "service": "Indoor IP camera installation",
+        "price": "700 hrn/unit"
+      },
+      {
+        "service": "Outdoor IP camera installation",
+        "price": "900 hrn/unit"
+      },
+      {
+        "service": "Wi-Fi camera installation",
+        "price": "800 hrn/unit"
+      },
+      {
+        "service": "PTZ camera installation",
+        "price": "from 1500 hrn"
+      },
+      {
+        "service": "Camera removal",
+        "price": "250 hrn/unit"
+      },
+      {
+        "service": "Camera relocation",
+        "price": "700 hrn/unit"
+      },
+      {
+        "service": "UTP cable installation",
+        "price": "25 hrn/m"
+      },
+      {
+        "service": "Cable installation in corrugated conduit",
+        "price": "35 hrn/m"
+      },
+      {
+        "service": "Cable installation in cable duct",
+        "price": "40 hrn/m"
+      },
+      {
+        "service": "Facade cable installation",
+        "price": "45 hrn/m"
+      },
+      {
+        "service": "Cable installation through attic",
+        "price": "35 hrn/m"
+      },
+      {
+        "service": "Underground cable installation",
+        "price": "90 hrn/m"
+      },
+      {
+        "service": "Drilling a hole",
+        "price": "100 hrn/unit"
+      },
+      {
+        "service": "Cable fastening",
+        "price": "0 hrn/unit (included in installation)"
+      },
+      {
+        "service": "RJ45 crimping",
+        "price": "80 hrn/unit"
+      },
+      {
+        "service": "RJ45 connector installation",
+        "price": "80 hrn/unit"
+      },
+      {
+        "service": "Internet outlet installation",
+        "price": "250 hrn/unit"
+      },
+      {
+        "service": "Junction box installation",
+        "price": "250 hrn/unit"
+      },
+      {
+        "service": "Power supply installation",
+        "price": "300 hrn/unit"
+      },
+      {
+        "service": "PoE switch installation",
+        "price": "500 hrn/unit"
+      },
+      {
+        "service": "PoE injector installation",
+        "price": "250 hrn/unit"
+      },
+      {
+        "service": "Router installation",
+        "price": "400 hrn/unit"
+      },
+      {
+        "service": "Router configuration",
+        "price": "400 hrn/unit"
+      },
+      {
+        "service": "Network switch installation",
+        "price": "400 hrn/unit"
+      },
+      {
+        "service": "Wi-Fi access point installation",
+        "price": "500 hrn/unit"
+      },
+      {
+        "service": "NVR installation",
+        "price": "800 hrn/unit"
+      },
+      {
+        "service": "HDD installation",
+        "price": "250 hrn/unit"
+      },
+      {
+        "service": "Video recorder configuration",
+        "price": "700 hrn/unit"
+      },
+      {
+        "service": "Adding 1 camera to the recorder",
+        "price": "150 hrn/unit"
+      },
+      {
+        "service": "Recording configuration",
+        "price": "300 hrn/unit"
+      },
+      {
+        "service": "Remote access configuration",
+        "price": "500 hrn/unit"
+      },
+      {
+        "service": "Adding to phone",
+        "price": "250 hrn/unit"
+      },
+      {
+        "service": "Adding to PC",
+        "price": "300 hrn/unit"
+      },
+      {
+        "service": "Notification configuration",
+        "price": "250 hrn/unit"
+      },
+      {
+        "service": "Wi-Fi camera reconnection",
+        "price": "350 hrn/unit"
+      },
+      {
+        "service": "Firmware update",
+        "price": "300 hrn/unit"
+      },
+      {
+        "service": "Diagnostics",
+        "price": "400 hrn/unit"
+      },
+      {
+        "service": "Camera cleaning",
+        "price": "250 hrn/unit"
+      },
+      {
+        "service": "RJ45 replacement",
+        "price": "100 hrn/unit"
+      },
+      {
+        "service": "Power supply replacement",
+        "price": "300 hrn/unit"
+      },
+      {
+        "service": "Cable replacement",
+        "price": "30 hrn/m"
+      },
+      {
+        "service": "Connection sealing",
+        "price": "100 hrn/unit"
+      },
+      {
+        "service": "Mounting box installation",
+        "price": "250 hrn/unit"
+      },
+      {
+        "service": "Bracket installation",
+        "price": "250 hrn/unit"
+      },
+      {
+        "service": "Customer instruction",
+        "price": "0 hrn"
+      }
+    ],
+
+    "serviceHeader": "Service",
+    "priceHeader": "Price",
+    "total": "Total cost",
+    "note": "Select services to see the total amount.",
+    "quantity": "qty",
+    "closeButton": "Close",
+    "totalPrice": "Selected services and total price will appear below.",
     "insertQuantity": "Enter quantity",
     "selectedServices": "Selected services",
     "editPrice": "Edit Price",

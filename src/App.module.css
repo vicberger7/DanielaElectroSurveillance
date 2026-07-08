@@ -153,8 +153,8 @@ nav {
 .sideMenu {
   position: fixed;
   top: 0;
-  right: -300px;
-  width: 250px;
+  right: -340px;
+  width: 300px;
   height: 100%;
   background-color: #65acf8;
   border-left: 3px solid white;
@@ -224,4 +224,65 @@ nav {
   cursor: pointer;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   transition: background-color 0.3s ease;
+}
+
+.aboutWrapper {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 125%;
+  left: -70%;
+   min-width: 220%; 
+  background: #4da3ff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  z-index: 100;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown a {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 2rem !important;
+  transform: none !important;
+  display: block;
+}
+
+/* .dropdown a:hover {
+  background-color: rgba(0,0,0,0.1);
+} */
+
+.dropdown a:hover {
+
+  transform: scale(1.1) !important;
+}
+
+
+.sideMenu ul ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.sideMenu ul ul li {
+  margin: 10px 0;
+}
+
+.sideMenu ul ul li a {
+  font-size: 28px;
 }
