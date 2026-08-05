@@ -50,7 +50,7 @@ export default function PricesDaniela() {
         index,
         value: numeric,
       });
-    }, 600);
+    }, 5000);
   };
 
   const handlePricePressEnd = () => {

@@ -57,7 +57,7 @@ export default function PricesMisha() {
         index,
         value: numeric,
       });
-    }, 600);
+    }, 5000);
   };
 
   const handlePricePressEnd = () => {
