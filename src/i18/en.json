@@ -218,6 +218,10 @@
         "category": "Distribution box and additional installations",
         "items": [
           {
+            "service": "Installation of a distribution box",
+            "price": "350 hrn/pc"
+          },
+          {
             "service": "Circuit breaker installation, 1 phase",
             "price": "200 hrn/pc"
           },
@@ -367,7 +371,17 @@
           {
             "service": "Installation of a track light on the rail",
             "price": "80 hrn/pc"
+          },
+          {
+            "service": "Installation of a light diffuser",
+            "price": "40 hrn/m"
+          },
+          {
+            "service": "Temporary lighting",
+            "price": "100 hrn/point"
           }
+          
+          
         ]
       },
       {
