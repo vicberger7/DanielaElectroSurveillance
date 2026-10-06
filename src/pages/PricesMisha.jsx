@@ -137,36 +137,83 @@ export default function PricesMisha() {
   // Update total calculation to apply discount
   const discountedTotal = Math.round(total - (total * discount) / 100);
 
-  const handleDownloadPDF = async () => {
-    if (!selectedRef.current) return;
+  // const handleDownloadPDF = async () => {
+  //   if (!selectedRef.current) return;
 
-    setIsExporting(true);
-    await new Promise((resolve) => setTimeout(resolve, 100));
+  //   setIsExporting(true);
+  //   await new Promise((resolve) => setTimeout(resolve, 100));
 
-    const canvas = await html2canvas(selectedRef.current, {
-      scale: 2,
-      useCORS: true,
-      scrollX: 0,
-      windowWidth: document.documentElement.scrollWidth,
-    });
+  //   const canvas = await html2canvas(selectedRef.current, {
+  //     scale: 2,
+  //     useCORS: true,
+  //     scrollX: 0,
+  //     windowWidth: document.documentElement.scrollWidth,
+  //   });
 
-    const imgData = canvas.toDataURL("image/png");
+  //   const imgData = canvas.toDataURL("image/png");
 
-    const imgWidth = 210; // A4 width in mm
-    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  //   const imgWidth = 210; // A4 width in mm
+  //   const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-    // create pdf with dynamic height
-    const pdf = new jsPDF("p", "mm", [imgWidth, imgHeight]);
+  //   // create pdf with dynamic height
+  //   const pdf = new jsPDF("p", "mm", [imgWidth, imgHeight]);
 
-    pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+  //   pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
 
-    const pdfBlob = pdf.output("blob");
-    const pdfUrl = URL.createObjectURL(pdfBlob);
+  //   const pdfBlob = pdf.output("blob");
+  //   const pdfUrl = URL.createObjectURL(pdfBlob);
 
-    window.open(pdfUrl, "_blank");
+  //   window.open(pdfUrl, "_blank");
 
-    setIsExporting(false);
-  };
+  //   setIsExporting(false);
+  // };
+
+const handleDownloadPDF = async () => {
+  if (!selectedRef.current) return;
+
+  setIsExporting(true);
+  await new Promise((r) => setTimeout(r, 100));
+
+  const element = selectedRef.current;
+
+  const canvas = await html2canvas(element, {
+    scale: 2,
+    useCORS: true,
+    backgroundColor: "#ffffff",
+    scrollX: 0,
+    scrollY: 0,
+  });
+
+  const imgData = canvas.toDataURL("image/png");
+
+  const pdf = new jsPDF("p", "mm", "a4");
+
+  const pageWidth = pdf.internal.pageSize.getWidth();
+  const pageHeight = pdf.internal.pageSize.getHeight();
+
+  const imgWidth = pageWidth;
+  const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+  let y = 0;
+
+  // Add first page
+  pdf.addImage(imgData, "PNG", 0, y, imgWidth, imgHeight);
+
+  // Add extra pages if needed
+  while (imgHeight - y > pageHeight) {
+    y -= pageHeight;
+    pdf.addPage();
+    pdf.addImage(imgData, "PNG", 0, y, imgWidth, imgHeight);
+  }
+
+  const pdfBlob = pdf.output("blob");
+  const pdfUrl = URL.createObjectURL(pdfBlob);
+
+  window.open(pdfUrl, "_blank");
+  setIsExporting(false);
+};
+
+
 
   const closeQtyModal = () => {
     const qty = quantities[modal.index];

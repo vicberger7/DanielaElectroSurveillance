@@ -119,8 +119,6 @@
   width: 33.33%;
 }
 
-
-
 @media screen and (min-width: 350px) and (max-width: 430px) {
   .table td {
     font-size: 1rem;
@@ -259,6 +257,8 @@
 .selectedList {
   padding: 0.5rem 1rem;
   margin-bottom: 0;
+
+ 
 }
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
@@ -282,8 +282,8 @@
 
 @media screen and (min-width: 350px) and (max-width: 430px) {
   .serviceTotal {
-   display: flex;
-   flex-direction: column;
+    display: flex;
+    flex-direction: column;
   }
 }
 
